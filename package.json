@@ -1,0 +1,54 @@
+{
+    "name": "siheom-ts",
+    "version": "0.1.0",
+    "description": "Data first test interpreter for Frontend Testing",
+    "keywords": [
+        "test",
+        "testing-library",
+        "playwright",
+        "typescript"
+    ],
+    "homepage": "https://github.com/twinstae/siheom-ts",
+    "bugs": {
+        "url": "https://github.com/twinstae/siheom-ts/issues"
+    },
+    "author": "Taehee Kim <rabolution@gmail.com> (https://x.com/stelo_kim)",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/twinstae/siheom-ts.git"
+    },
+    "files": [
+        "dist"
+    ],
+    "type": "module",
+    "license": "MIT",
+    "devDependencies": {
+        "@arethetypeswrong/cli": "^0.18.1",
+        "@biomejs/biome": "^1.9.4",
+        "@changesets/cli": "^2.29.4",
+        "@typescript/native-preview": "^7.0.0-dev.20250602.1",
+        "@vitest/browser": "^3.2.0",
+        "tsdown": "^0.12.6",
+        "typescript": "^5.8.3",
+        "vitest": "^3.2.0"
+    },
+    "scripts": {
+        "ci": "bun run build && bun run check-format && bun run check-exports && bun run typecheck && bun run test",
+        "test": "vitest run",
+        "typecheck": "tsgo",
+        "check-format": "biome format src",
+        "format": "biome format --write src",
+        "check-exports": "attw --pack .",
+        "build": "tsdown",
+        "local-release": "changeset version && changeset publish",
+        "prepublishOnly": "npm run ci"
+    },
+    "main": "dist/index.js",
+    "exports": {
+        "./package.json": "./package.json",
+        ".": {
+            "import": "./dist/index.js",
+            "default": "./dist/index.cjs"
+        }
+    }
+}
