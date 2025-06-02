@@ -15,10 +15,10 @@ export default defineConfig({
 		poolOptions: {
 			useAtomics: true,
 		},
-		environment: 'node',
+		environment: 'happy-dom',
 		browser: {
-			enabled: true,
-			headless: true,
+			enabled: false,
+			headless: false,
 			provider: "playwright",
 			 instances: [
                 {
