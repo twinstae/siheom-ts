@@ -7,6 +7,8 @@ import { SignUpForm } from "./SignUpForm";
 const MEMBER = {
 	email: "test@test.com",
 	password: "test123456",
+	agreement: true,
+	privacy: true,
 };
 
 describe("SignUpForm", () => {
@@ -34,7 +36,11 @@ describe("SignUpForm", () => {
 
 			actions.fill(query.textbox("이메일"), MEMBER.email),
 			actions.fill(query.textbox("비밀번호"), MEMBER.password),
-      
+
+			// 약관 동의 체크박스를 클릭한다
+			actions.click(query.checkbox("약관 동의")),
+			actions.click(query.checkbox("개인정보 수집 동의")),
+			
 			actions.click(query.button("가입하기")),
 		);
 
