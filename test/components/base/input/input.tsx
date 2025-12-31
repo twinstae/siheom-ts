@@ -253,13 +253,14 @@ export const Input = ({
     inputClassName,
     wrapperClassName,
     tooltipClassName,
+    isInvalid,
     ...props
 }: InputProps) => {
     const inputId = useId();
     const hintId = useId();
     return (
         <TextField aria-label={!label ? placeholder : undefined} hintId={hintId} {...props} className={className}>
-            {({ isRequired, isInvalid }) => (
+            {({ isRequired }) => (
                 <>
                     {label && <Label htmlFor={inputId} isRequired={hideRequiredIndicator ? !hideRequiredIndicator : isRequired}>{label}</Label>}
 
@@ -278,11 +279,12 @@ export const Input = ({
                             tooltipClassName,
                             tooltip,
                             hint,
-                            hintId
+                            hintId,
+                            isInvalid,
                         }}
                     />
 
-                    {hint && <HintText id={hintId} isInvalid={isInvalid}>{hint}</HintText>}
+                    {hint && <HintText id={hintId} role={isInvalid ? "alert" : undefined} isInvalid={isInvalid}>{hint}</HintText>}
                 </>
             )}
         </TextField>

@@ -1,27 +1,27 @@
 "use client";
 
-import { useId, type ReactNode, type Ref } from "react";
+import { useId, type HTMLAttributes, type ReactNode, type Ref } from "react";
 import { Checkbox as AriaCheckbox, type CheckboxProps as AriaCheckboxProps } from "react-aria-components";
 import { cx } from "@test/utils/cx";
 
 export interface CheckboxBaseProps {
     size?: "sm" | "md";
     className?: string;
-    isFocusVisible?: boolean;
     isSelected?: boolean;
     isDisabled?: boolean;
     isIndeterminate?: boolean;
 }
 
-export const CheckboxBase = ({ className, isSelected, isDisabled, isIndeterminate, size = "sm", isFocusVisible = false }: CheckboxBaseProps) => {
+export const CheckboxBase = ({ className, isDisabled, isIndeterminate, size = "sm" }: CheckboxBaseProps) => {
     return (
         <div
             className={cx(
                 "relative flex size-4 shrink-0 cursor-pointer appearance-none items-center justify-center rounded bg-primary ring-1 ring-primary ring-inset",
                 size === "md" && "size-5 rounded-md",
-                (isSelected || isIndeterminate) && "bg-brand-solid ring-bg-brand-solid",
+                "group-has-[:checked]:bg-brand-solid group-has-[:checked]:ring-bg-brand-solid",
+                isIndeterminate && "bg-brand-solid ring-bg-brand-solid",
                 isDisabled && "cursor-not-allowed bg-disabled_subtle ring-disabled",
-                isFocusVisible && "outline-2 outline-offset-2 outline-focus-ring",
+                "aria-focus-visible:outline-2 aria-focus-visible:outline-offset-2 aria-focus-visible:outline-focus-ring",
                 className,
             )}
         >
@@ -46,7 +46,8 @@ export const CheckboxBase = ({ className, isSelected, isDisabled, isIndeterminat
                 className={cx(
                     "pointer-events-none absolute size-3 text-fg-white opacity-0 transition-inherit-all",
                     size === "md" && "size-3.5",
-                    isSelected && !isIndeterminate && "opacity-100",
+                    "group-has-[:checked]:opacity-100",
+                    isIndeterminate && "opacity-0",
                     isDisabled && "text-fg-disabled_subtle",
                 )}
             >
@@ -57,14 +58,15 @@ export const CheckboxBase = ({ className, isSelected, isDisabled, isIndeterminat
 };
 CheckboxBase.displayName = "CheckboxBase";
 
-interface CheckboxProps extends AriaCheckboxProps {
+interface CheckboxProps extends Omit<React.ComponentProps<"input">, "ref" | "size"> {
     ref?: Ref<HTMLLabelElement>;
     size?: "sm" | "md";
     label?: ReactNode;
     hint?: ReactNode;
+    isInvalid?: boolean;
 }
 
-export const Checkbox = ({ label, hint, size = "sm", className, ...ariaCheckboxProps }: CheckboxProps) => {
+export const Checkbox = ({ ref, label, hint, size = "sm", className, checked, onChange, isInvalid, ...ariaCheckboxProps }: CheckboxProps) => {
     const sizes = {
         sm: {
             root: "gap-2",
@@ -83,44 +85,41 @@ export const Checkbox = ({ label, hint, size = "sm", className, ...ariaCheckboxP
     const labelId = useId();
     const errorId = useId();
     return (
-        <AriaCheckbox
-            {...ariaCheckboxProps}
-            aria-labelledby={labelId}
-            aria-invalid={ariaCheckboxProps.isInvalid ? "true" : undefined}
-            aria-describedby={hint ? errorId : undefined}
-            aria-errormessage={ariaCheckboxProps.isInvalid ? errorId : undefined}
-            className={(state) =>
-                cx(
-                    "flex items-start",
-                    state.isDisabled && "cursor-not-allowed",
-                    sizes[size].root,
-                    typeof className === "function" ? className(state) : className,
-                )
-            }
-        >
-            {({ isSelected, isIndeterminate, isDisabled, isFocusVisible }) => (
-                <>
-                    <CheckboxBase
-                        size={size}
-                        isSelected={isSelected}
-                        isIndeterminate={isIndeterminate}
-                        isDisabled={isDisabled}
-                        isFocusVisible={isFocusVisible}
-                        className={label || hint ? "mt-0.5" : ""}
-                    />
-                    {(label || hint) && (
-                        <div className={cx("inline-flex flex-col", sizes[size].textWrapper)}>
-                            {label && <p id={labelId} className={cx("text-secondary select-none", sizes[size].label)}>{label}</p>}
-                            {hint && (
-                                <span id={errorId} className={cx("text-tertiary", sizes[size].hint)} onClick={(event) => event.stopPropagation()}>
-                                    {hint}
-                                </span>
-                            )}
-                        </div>
-                    )}
-                </>
+        <label
+            ref={ref}
+            className={cx(
+                "group flex items-start",
+                "aria-disabled:cursor-not-allowed",
+                sizes[size].root,
+                className
             )}
-        </AriaCheckbox>
+        >
+            <input type="checkbox"
+                className="sr-only"
+                checked={checked}
+                onChange={onChange}
+                {...ariaCheckboxProps}
+                aria-labelledby={labelId}
+                aria-invalid={isInvalid ? "true" : undefined}
+                aria-describedby={hint ? errorId : undefined}
+                aria-errormessage={isInvalid ? errorId : undefined}
+            />
+            <CheckboxBase
+                size={size}
+                isDisabled={ariaCheckboxProps['aria-disabled'] === "true"}
+                className={label || hint ? "mt-0.5" : ""}
+            />
+            {(label || hint) && (
+                <div className={cx("inline-flex flex-col", sizes[size].textWrapper)}>
+                    {label && <div id={labelId} className={cx("text-secondary select-none", sizes[size].label)}>{label}</div>}
+                    {hint && (
+                        <span id={errorId} role={isInvalid ? "alert" : undefined} className={cx("text-tertiary", sizes[size].hint)} onClick={(event) => event.stopPropagation()}>
+                            {hint}
+                        </span>
+                    )}
+                </div>
+            )}
+        </label>
     );
 };
 Checkbox.displayName = "Checkbox";

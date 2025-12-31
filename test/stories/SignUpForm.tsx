@@ -79,11 +79,11 @@ function SimpleForm<T extends object>({ schema, children, onSubmit, ...formProps
 				const result = v.safeParse(schema, rawData);
 
 				if (result.success === false) {
-					setError(
-						Object.fromEntries(
-							result.issues.map((issue) => [issue.path?.map(item => item?.key).join("."), issue.message]),
-						),
+					const errors = Object.fromEntries(
+						result.issues.map((issue) => [issue.path?.map(item => item?.key).join("."), issue.message]),
 					);
+
+					setError(errors);
 					return;
 				}
 
@@ -113,15 +113,22 @@ function SimpleTextInput({ name, type, label }: {
 	)
 }
 
-function SimpleCheckbox({ name, label }: {
+function SimpleCheckbox({ name, label, initChecked = false }: {
 	name: string,
 	label: string,
+	initChecked?: boolean,
+	onChange?: (checked: boolean) => void,
 }) {
 	const error = useContext(ErrorContext);
+	const [checked, setChecked] = useState(initChecked);
 	return (
 		<Checkbox
 			name={name}
 			label={label}
+			checked={checked}
+			onChange={(event) => {
+				setChecked(event.currentTarget.checked);
+			}}
 			isInvalid={error[name] ? true : undefined}
 			hint={error[name]}
 		/>
