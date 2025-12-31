@@ -18,7 +18,7 @@ export default defineConfig({
 		},
 		environment: 'happy-dom',
 		browser: {
-			enabled: false,
+			enabled: true,
 			headless: false,
 			provider: "playwright",
 			 instances: [

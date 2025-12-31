@@ -2,3 +2,5 @@ node_modules
 dist
 .vscode
 test/stories/__screenshots__
+*storybook.log
+storybook-static
