@@ -1,3 +1,4 @@
+import "../index.css"
 import { describe, expect, it } from "vitest";
 import { assertions, query, runSiheom } from "../../src";
 import { actions } from "../../src/siheom/action";

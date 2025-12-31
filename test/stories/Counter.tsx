@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { Button } from "@test/components/base/buttons/button";
+import React, { useState } from "react";
 
 export function Counter() {
 	const [state, setState] = useState(0);
 
 	return (
-		<button
-			type="button"
+		<Button
 			onClick={() => {
 				setState((old) => old + 1);
 			}}
 		>
 			{state}
-		</button>
+		</Button>
 	);
 }

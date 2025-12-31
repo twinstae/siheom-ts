@@ -1,7 +1,8 @@
 import { Button } from "@test/components/base/buttons/button";
+import { Checkbox } from "@test/components/base/checkbox/checkbox";
 import { Input } from "@test/components/base/input/input";
-import { getFieldErrorProps } from "@test/utils/getFieldErrorMessage";
-import { createContext, useContext, useId, useState } from "react";
+import { parseFormDatatoJsObject } from "@test/utils/parseFormDatatoJsObject";
+import React, { createContext, useContext, useState } from "react";
 import * as v from "valibot";
 
 const newMemberSchema = v.object({
@@ -25,6 +26,7 @@ export function SignUpForm({
 
 	return (
 		<SimpleForm
+			className="flex flex-col gap-4 max-w-md mx-auto rounded-lg p-4 shadow-md"
 			schema={newMemberSchema}
 			onSubmit={signUpMember}
 		>
@@ -59,16 +61,12 @@ export function SignUpForm({
 
 const ErrorContext = createContext<Record<string, string | undefined>>({});
 
-function parseFormDatatoJsObject(formData: FormData): unknown {
-	return Object.fromEntries([...formData.entries()]
-		.map(([key, value]) => [key, value === 'on' ? true : value === 'off' ? false : value]));
-}
 
-function SimpleForm<T extends object>({ schema, children, onSubmit }: {
+function SimpleForm<T extends object>({ schema, children, onSubmit, ...formProps }: {
 	schema: v.BaseSchema<T, T, v.BaseIssue<unknown>>,
 	children: React.ReactNode,
 	onSubmit: (data: T) => Promise<void>
-}) {
+} & Omit<React.FormHTMLAttributes<HTMLFormElement>, "onSubmit" | "children">) {
 	const [error, setError] = useState({} as Record<string, string | undefined>);
 	return (
 		<ErrorContext.Provider value={error}>
@@ -77,7 +75,7 @@ function SimpleForm<T extends object>({ schema, children, onSubmit }: {
 
 				const formData = new FormData(event.currentTarget);
 
-				const rawData = parseFormDatatoJsObject(formData);
+				const rawData = parseFormDatatoJsObject(formData, schema);
 				const result = v.safeParse(schema, rawData);
 
 				if (result.success === false) {
@@ -91,7 +89,7 @@ function SimpleForm<T extends object>({ schema, children, onSubmit }: {
 
 				setError({});
 				return onSubmit(result.output);
-			}}>
+			}} {...formProps}>
 				{children}
 			</form>
 		</ErrorContext.Provider>
@@ -119,36 +117,13 @@ function SimpleCheckbox({ name, label }: {
 	name: string,
 	label: string,
 }) {
-	const inputId = useId();
-	const errorId = useId();
 	const error = useContext(ErrorContext);
 	return (
-		<>
-			<label htmlFor={inputId}>{label}</label>
-			<input
-				id={inputId}
-				type="checkbox"
-				name={name}
-				{...getFieldErrorProps(error, name, errorId)}
-			/>
-			<SimpleErrorMessage error={error} name={name} errorId={errorId} />
-		</>
+		<Checkbox
+			name={name}
+			label={label}
+			isInvalid={error[name] ? true : undefined}
+			hint={error[name]}
+		/>
 	)
-}
-
-function SimpleErrorMessage({ error, name, errorId }: {
-	name: string,
-	error: Record<string, string | undefined>,
-	errorId: string
-}) {
-	return error[name] && (
-		<div
-			id={errorId}
-			role="alert"
-			aria-live="assertive"
-			aria-label={error[name]}
-		>
-			{error[name]}
-		</div>
-	);
 }
