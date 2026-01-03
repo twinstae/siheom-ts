@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/dom";
 import type { Locator } from "./types";
+import { concreteRoles, type ConcreteAriaRole } from "./a11y/ariaRoles";
 
 export const getElement = <T extends boolean>(
 	locator: Locator,
@@ -47,89 +48,19 @@ export function locatorLog(target: Locator) {
 	return `${target.role} ${target.name}`;
 }
 
-const ROLES = [
-	"article",
-	"cell",
-	"columnheader",
-	"definition",
-	"directory",
-	"document",
-	"figure",
-	"group",
-	"heading",
-	"img",
-	"list",
-	"listitem",
-	"meter",
-	"row",
-	"rowgroup",
-	"rowheader",
-	"separator",
-	"table",
-	"term",
-	"blockquote",
-	"caption",
-	"code",
-	"deletion",
-	"emphasis",
-	"insertion",
-	"paragraph",
-	"strong",
-	"subscript",
-	"superscript",
-	"time",
+const CUSTOM_ROLES = ["label", "text"] as const;
+type CustomRole = (typeof CUSTOM_ROLES)[number];
+export type RoleName = ConcreteAriaRole | CustomRole;
 
-	"scrollbar",
-	"searchbox",
-	"separator",
-	"slider",
-	"spinbutton",
-	"switch",
-	"tab",
-	"tabpanel",
-	"treeitem",
+type QueryObject = { [K in RoleName]: (name: string | RegExp) => Locator };
 
-	"button",
-	"checkbox",
-	"gridcell",
-	"link",
-	"menuitem",
-	"menuitemcheckbox",
-	"menuitemradio",
-	"option",
-	"progressbar",
-	"radio",
-	"textbox",
+function createQueryObject(): QueryObject {
+	const roles: RoleName[] = [...concreteRoles, ...CUSTOM_ROLES];
+	const result = {} as QueryObject;
+	for (const role of roles) {
+		result[role] = (name: string | RegExp) => ({ role, name });
+	}
+	return result;
+}
 
-	"combobox",
-	"menu",
-	"menubar",
-	"tablist",
-	"tree",
-	"treegrid",
-
-	"banner",
-	"complementary",
-	"contentinfo",
-	"form",
-	"main",
-	"navigation",
-	"region",
-	"search",
-
-	"alert",
-	"log",
-	"marquee",
-	"status",
-	"timer",
-
-	"alertdialog",
-	"dialog",
-
-	"label",
-	"text",
-] as const;
-
-export const query = Object.fromEntries(
-	ROLES.map((role) => [role, (name: string | RegExp) => ({ role, name })]),
-) as Record<(typeof ROLES)[number], (name: string | RegExp) => Locator>;
+export const query: QueryObject = createQueryObject();

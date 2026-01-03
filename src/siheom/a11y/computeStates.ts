@@ -1,14 +1,5 @@
 import type { A11yNodeStates } from "./types.ts";
-
-// Roles that can have checked state
-const CHECKABLE_ROLES = new Set([
-	"checkbox",
-	"radio",
-	"menuitemcheckbox",
-	"menuitemradio",
-	"switch",
-	"option",
-]);
+import { isCheckableRole } from "./ariaRoles.ts";
 
 function checkBooleanAttribute(el: Element, attr: string): boolean | undefined {
 	const val = el.getAttribute(attr);
@@ -103,7 +94,7 @@ export function computeAllStates(el: Element, role: string): A11yNodeStates {
 	const states: A11yNodeStates = {};
 
 	// Only compute checked for checkable roles
-	if (CHECKABLE_ROLES.has(role)) {
+	if (isCheckableRole(role)) {
 		const checked = computeAriaChecked(el);
 		if (checked !== undefined) states.checked = checked;
 	}

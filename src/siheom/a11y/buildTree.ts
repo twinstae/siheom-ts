@@ -6,30 +6,9 @@ import type { A11yNode } from "./types.ts";
 import { getRole } from "./roleHelpers.ts";
 import { isInaccessible } from "./isAccessible.ts";
 import { computeAllStates, computeHeadingLevel } from "./computeStates.ts";
+import { isNameFromContentRole } from "./ariaRoles.ts";
 
-// Roles that should be skipped (wrapper elements with no semantic meaning)
 const SKIP_ROLES = new Set(["generic", "presentation", "none"]);
-
-// Elements whose text content IS their accessible name - skip children
-const TEXT_NAME_ROLES = new Set([
-	"button",
-	"cell",
-	"checkbox",
-	"columnheader",
-	"gridcell",
-	"heading",
-	"link",
-	"menuitem",
-	"menuitemcheckbox",
-	"menuitemradio",
-	"option",
-	"radio",
-	"row",
-	"rowheader",
-	"switch",
-	"tab",
-	"tooltip",
-]);
 
 export function buildA11yTree(el: HTMLElement): A11yNode | null {
 	// Skip inaccessible elements
@@ -59,7 +38,7 @@ export function buildA11yTree(el: HTMLElement): A11yNode | null {
 
 	// For text-name elements, check if children just duplicate the name
 	const shouldSkipChildren =
-		TEXT_NAME_ROLES.has(role) && hasOnlyTextMatchingName(el, name);
+		isNameFromContentRole(role) && hasOnlyTextMatchingName(el, name);
 
 	const node: A11yNode = {
 		role,
