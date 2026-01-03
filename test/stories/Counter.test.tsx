@@ -12,5 +12,21 @@ describe("Counter", () => {
         actions.click(query.button("1")),
         assertions.visible(query.button("2"))
     )
-  })  
+  })
+
+  it("초기 상태의 접근성 스냅샷을 확인한다", () => {
+    return runSiheom(
+        given.render(<Counter />),
+        assertions.a11ySnapshot(query.button("0"), "counter-initial.snap")
+    )
+  })
+
+  it("클릭 후 접근성 스냅샷을 확인한다", () => {
+    return runSiheom(
+        given.render(<Counter />),
+        actions.click(query.button("0")),
+        actions.click(query.button("1")),
+        assertions.a11ySnapshot(query.button("2"), "counter-after-clicks.snap")
+    )
+  })
 })

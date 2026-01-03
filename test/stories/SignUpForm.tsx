@@ -2,7 +2,8 @@ import { Button } from "@test/components/base/buttons/button";
 import { Checkbox } from "@test/components/base/checkbox/checkbox";
 import { Input } from "@test/components/base/input/input";
 import { parseFormDatatoJsObject } from "@test/utils/parseFormDatatoJsObject";
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import type React from "react";
 import * as v from "valibot";
 
 const newMemberSchema = v.object({
