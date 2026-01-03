@@ -1,0 +1,20 @@
+region: "signup-form"
+  "이메일"
+  "*"
+  textbox: "이메일 *" [value=""] [description="올바른 이메일 형식이 아닙니다"]
+  alert
+    "올바른 이메일 형식이 아닙니다"
+  "비밀번호"
+  "*"
+  textbox: "비밀번호 *" [value=""] [description="비밀번호를 10자 이상 입력해주세요"]
+  alert
+    "비밀번호를 10자 이상 입력해주세요"
+  checkbox: "약관 동의" [checked=false] [value="on"] [description="약관 동의에 동의해야 합니다"]
+  "약관 동의"
+  alert
+    "약관 동의에 동의해야 합니다"
+  checkbox: "개인정보 수집 동의" [checked=false] [value="on"] [description="개인정보 수집 동의에 동의해야 합니다"]
+  "개인정보 수집 동의"
+  alert
+    "개인정보 수집 동의에 동의해야 합니다"
+  button: "가입하기"

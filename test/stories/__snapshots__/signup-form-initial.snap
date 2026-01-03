@@ -1,0 +1,12 @@
+region: "signup-form"
+  "이메일"
+  "*"
+  textbox: "이메일 *" [value=""]
+  "비밀번호"
+  "*"
+  textbox: "비밀번호 *" [value=""]
+  checkbox: "약관 동의" [checked=false] [value="on"]
+  "약관 동의"
+  checkbox: "개인정보 수집 동의" [checked=false] [value="on"]
+  "개인정보 수집 동의"
+  button: "가입하기"
