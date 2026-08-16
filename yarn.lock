@@ -4829,6 +4829,7 @@ __metadata:
     "@babel/core": "npm:^7.26.0"
     "@react-native/babel-preset": "npm:0.86.0"
     "@siheom/core": "workspace:*"
+    "@siheom/snapshot": "workspace:*"
     "@testing-library/jest-dom": "npm:^6.9.1"
     "@testing-library/react-native": "npm:^14.0.0"
     "@types/node": "npm:^24.13.3"
