@@ -17,6 +17,7 @@ return runSiheom(
 
 | 패키지 | 역할 |
 | --- | --- |
+| [`@siheom/snapshot`](packages/snapshot) | 접근성 트리 및 테이블 snapshot 유틸리티 |
 | [`@siheom/core`](packages/core) | 인터프리터, factory, 기본 actions/assertions |
 | [`@siheom/react`](packages/react) | React `given.render` |
 | [`@siheom/vue`](packages/vue) | Vue `given.render` |
