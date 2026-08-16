@@ -12,6 +12,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@siheom/core": path.resolve(dirname, "../core/src/index.ts"),
+      "@siheom/snapshot/aria-roles": path.resolve(dirname, "../snapshot/src/a11y/ariaRoles.ts"),
+      "@siheom/snapshot": path.resolve(dirname, "../snapshot/src/index.ts"),
     },
   },
   test: {
