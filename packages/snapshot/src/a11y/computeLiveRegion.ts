@@ -1,4 +1,4 @@
-import type { A11yLiveRegion } from "./types.ts";
+import type { A11yLiveRegion } from "./types.js";
 
 export function computeLive(
   el: Element,

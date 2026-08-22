@@ -2,9 +2,6 @@
   "files": [],
   "references": [
     {
-      "path": "../snapshot"
-    },
-    {
       "path": "./tsconfig.cjs.json"
     },
     {

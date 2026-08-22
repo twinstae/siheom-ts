@@ -1,4 +1,4 @@
-import { getA11ySnapshot } from "./getA11ySnapshot.js";
+import { getA11ySnapshot } from "@siheom/snapshot";
 import { formatFailureReport, type MessageMap } from "./messages.js";
 
 export function defaultFailureSnapshot(): string {

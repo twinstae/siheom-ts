@@ -2,15 +2,7 @@ import { defineConfig } from "tsdown";
 import { createTsdownBuildOptions } from "../../scripts/create-tsdown-build-options.mjs";
 
 const options = createTsdownBuildOptions({
-  entries: [
-    "src/index.ts",
-    "src/siheom.ts",
-    "src/effect.ts",
-    "src/imperative.ts",
-    "src/withFakeTimers.ts",
-    "src/a11y/ariaRoles.ts",
-  ],
-  neverBundle: [/^@siheom\/snapshot(\/.*)?$/],
+  entries: ["src/index.ts", "src/a11y/ariaRoles.ts"],
 });
 
 export default defineConfig(options);

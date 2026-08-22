@@ -1,5 +1,5 @@
-import type { A11yProperties } from "./types.ts";
-import { fromDefinedEntries, mergeDefinedParts } from "./assignDefined.ts";
+import type { A11yProperties } from "./types.js";
+import { fromDefinedEntries, mergeDefinedParts } from "./assignDefined.js";
 
 function getNumberAttribute(el: Element, attr: string): number | undefined {
   const val = el.getAttribute(attr);

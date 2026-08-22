@@ -23,6 +23,9 @@
       "path": "packages/react-native"
     },
     {
+      "path": "packages/snapshot"
+    },
+    {
       "path": "packages/solid"
     },
     {

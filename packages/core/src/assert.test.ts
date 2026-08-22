@@ -1,5 +1,5 @@
 import { afterAll, afterEach, describe, expect, it, vi } from "vitest";
-import type { A11ySnapshotOptions } from "./getA11ySnapshot.ts";
+import type { A11ySnapshotOptions } from "@siheom/snapshot";
 import type { Locator } from "./types.ts";
 import { query } from "./query.ts";
 

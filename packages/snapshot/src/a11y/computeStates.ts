@@ -1,7 +1,7 @@
-import type { A11yStates } from "./types.ts";
-import { isCheckableRole } from "./ariaRoles.ts";
-import { isDisabledByHTMLSemantics } from "./elementSemantics.ts";
-import { fromDefinedEntries, mergeDefinedParts } from "./assignDefined.ts";
+import type { A11yStates } from "./types.js";
+import { isCheckableRole } from "./ariaRoles.js";
+import { isDisabledByHTMLSemantics } from "./elementSemantics.js";
+import { fromDefinedEntries, mergeDefinedParts } from "./assignDefined.js";
 
 function checkBooleanAttribute(
   el: Element,

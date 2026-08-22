@@ -1,5 +1,5 @@
-import { isDisabledByHTMLSemantics, isEffectivelyHidden } from "./elementSemantics.ts";
-import type { A11yInteraction } from "./types.ts";
+import { isDisabledByHTMLSemantics, isEffectivelyHidden } from "./elementSemantics.js";
+import type { A11yInteraction } from "./types.js";
 
 /**
  * Minimal passive port of focus candidates, active-element resolution, and radio pruning from

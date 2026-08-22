@@ -39,16 +39,6 @@ Prefer exercising public APIs through `runSiheom` / `defaultActions` / `defaultA
 - [x] `query.label` resolves by accessible label text
 - [x] Invisible query path used by `visible(false)`
 
-## A11y failure formatting (via getA11ySnapshot / failing assert)
+## Snapshot compatibility
 
-- [x] Snapshot includes role, name, and checked state
-- [x] Snapshot includes heading level / haspopup properties
-- [x] Snapshot includes aria-describedby / aria-errormessage relations
-- [x] Accessible names with quotes/newlines are escaped
-- [x] Diverse fixtures: form states, dialog, nav current, listbox, slider/progress, tabs, toggle, combobox, tree, grid, live regions, drag-drop, menu, skip iframe/svg/presentation, rich relations, invalid grammar/spelling, select, verbose missing controls, computeOther
-
-## tableToMarkdown
-
-- [x] Renders thead/tbody cells as padded markdown
-- [x] Empty table throws
-- [x] Diverse fixtures: Korean padding, input cell, progress cell, mixed widths, ARIA table roles
+- [x] The core entry point keeps accessibility and table snapshot utilities available.

@@ -1,6 +1,6 @@
 import { buildA11yTree } from "./a11y/buildTree.js";
 import { serializeA11yTree } from "./a11y/serializeTree.js";
-import type { BuildA11yTreeOptions, SerializeOptions } from "./a11y/types.js";
+import type { A11yNode, BuildA11yTreeOptions, SerializeOptions } from "./a11y/types.js";
 
 export type {
   A11yNode,
@@ -33,6 +33,9 @@ export function getA11ySnapshot(element: HTMLElement, options: A11ySnapshotOptio
 /**
  * Returns the structured accessibility tree for programmatic access.
  */
-export function getA11yTree(element: HTMLElement, options: BuildA11yTreeOptions = {}) {
+export function getA11yTree(
+  element: HTMLElement,
+  options: BuildA11yTreeOptions = {},
+): A11yNode | null {
   return buildA11yTree(element, options);
 }

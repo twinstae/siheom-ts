@@ -1,4 +1,4 @@
-import type { A11yDragDrop } from "./types.ts";
+import type { A11yDragDrop } from "./types.js";
 
 export function computeGrabbed(el: Element, isVerbose = false): boolean | null | undefined {
   const val = el.getAttribute("aria-grabbed");
