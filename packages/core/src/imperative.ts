@@ -70,9 +70,9 @@ type ImperativeAssertionBindings<TAssertions extends AssertionStepDefinitionDict
         ? (target: Locator, arg: Arg) => Promise<void>
         : never
       : OmitIndexSignature<TAssertions>[K] extends (
-          target: Locator,
-          ...args: infer Args
-        ) => Promise<void>
+            target: Locator,
+            ...args: infer Args
+          ) => Promise<void>
         ? (target: Locator, ...args: Args) => Promise<void>
         : never;
 };
@@ -82,22 +82,23 @@ type ImperativeNotAssertionBindings<TAssertions extends AssertionStepDefinitionD
     (BooleanAssertionKey | FlagAssertionKey)]: K extends BooleanAssertionKey
     ? (target: Locator) => Promise<void>
     : OmitIndexSignature<TAssertions>[K] extends (
-        target: Locator,
-        arg: infer Arg,
-        flag?: boolean,
-      ) => Promise<void>
+          target: Locator,
+          arg: infer Arg,
+          flag?: boolean,
+        ) => Promise<void>
       ? (target: Locator, arg: Arg) => Promise<void>
       : never;
 };
 
-export type ImperativeArgsBindings<TSteps extends Record<string, (...args: never[]) => Promise<void>>> =
-  {
-    [K in keyof OmitIndexSignature<TSteps>]: OmitIndexSignature<TSteps>[K] extends (
-      ...args: infer Args
-    ) => Promise<void>
-      ? (...args: Args) => Promise<void>
-      : never;
-  };
+export type ImperativeArgsBindings<
+  TSteps extends Record<string, (...args: never[]) => Promise<void>>,
+> = {
+  [K in keyof OmitIndexSignature<TSteps>]: OmitIndexSignature<TSteps>[K] extends (
+    ...args: infer Args
+  ) => Promise<void>
+    ? (...args: Args) => Promise<void>
+    : never;
+};
 
 export type ImperativeSiheom<
   TActions extends ActionStepDefinitionDict = ActionStepDefinitionDict,
@@ -224,9 +225,8 @@ export function createImperativeSiheom<
         });
       installFakeTimers();
       try {
-        const { createFakeTimerScopedRegistries: createDefaultScopedRegistries } = await import(
-          "./fakeTimerScope.js"
-        );
+        const { createFakeTimerScopedRegistries: createDefaultScopedRegistries } =
+          await import("./fakeTimerScope.js");
         const scopeRegistries =
           registries.createFakeTimerScopedRegistries ?? createDefaultScopedRegistries;
         const scopedRegistries = scopeRegistries(registries);
