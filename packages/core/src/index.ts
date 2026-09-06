@@ -1,5 +1,12 @@
 export { createRunSiheom } from "./siheom.js";
 export type { SiheomRegistries } from "./siheom.js";
+export { createImperativeSiheom } from "./imperative.js";
+export type {
+  CreateImperativeSiheomOptions,
+  ImperativeArgsBindings,
+  ImperativeSiheom,
+  ImperativeTargetBindings,
+} from "./imperative.js";
 export { defaultMessageMap, formatFailureReport, resolveMessageMap } from "./messages.js";
 export type { MessageMap } from "./messages.js";
 export { extendSiheom, overrideSiheom } from "./factory.js";

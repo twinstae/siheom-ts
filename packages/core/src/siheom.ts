@@ -12,8 +12,8 @@ import type {
   Locator,
   Step,
 } from "./types.js";
-import { getA11ySnapshot } from "./getA11ySnapshot.js";
-import { formatFailureReport, type MessageMap } from "./messages.js";
+import type { MessageMap } from "./messages.js";
+import { defaultFailureSnapshot, runLoggedStep, wrapStepError } from "./runner.js";
 import type { FakeTimerScopeHooks, SiheomRegistryBundle } from "./fakeTimerScope.js";
 
 export type { FakeTimerScopeHooks, SiheomRegistryBundle } from "./fakeTimerScope.js";
@@ -40,33 +40,6 @@ export type SiheomRegistries<
   ) => SiheomRegistryBundle<TActions, TAssertions, TGivens, TEffects>;
   getFailureSnapshot?: () => string;
 };
-
-function defaultFailureSnapshot(): string {
-  if (typeof document === "undefined") {
-    return "";
-  }
-
-  return getA11ySnapshot(document.body);
-}
-
-function wrapStepError(
-  logs: string[],
-  error: Error,
-  getFailureSnapshot: () => string,
-  messages: MessageMap | undefined,
-): never {
-  throw new Error(formatFailureReport(logs, error, getFailureSnapshot(), messages));
-}
-
-async function runLoggedStep(
-  logs: string[],
-  log: string,
-  handleError: (error: Error) => never,
-  run: () => Promise<void>,
-): Promise<void> {
-  logs.push(log);
-  await run().catch(handleError);
-}
 
 async function runActionStep<TActions extends ActionStepDefinitionDict>(
   step: ActionStep<TActions>,

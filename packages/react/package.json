@@ -27,6 +27,23 @@
         "types": "./dist/cjs/index.d.cts",
         "default": "./dist/cjs/index.cjs"
       }
+    },
+    "./imperative": {
+      "import": {
+        "types": "./dist/esm/imperative.d.ts",
+        "default": "./dist/esm/imperative.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/imperative.d.cts",
+        "default": "./dist/cjs/imperative.cjs"
+      }
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "imperative": [
+        "./dist/esm/imperative.d.ts"
+      ]
     }
   },
   "scripts": {

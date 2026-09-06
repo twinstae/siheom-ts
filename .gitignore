@@ -25,3 +25,4 @@ packages/core/src/**/*.d.ts
 packages/**/*.tgz
 packages/**/.stryker-tmp
 packages/**/.vitest-web-ext-cache
+.freebuff/project-id

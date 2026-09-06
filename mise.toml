@@ -1,5 +1,0 @@
-[tools]
-node = "24.20.0"
-
-[settings]
-lockfile = true

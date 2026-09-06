@@ -21,10 +21,8 @@ function wrapInActAsync<T extends Record<string, (...args: never[]) => Promise<v
   ) as T;
 }
 
-export const reactActions = wrapInActAsync(createDefaultActions()) as ActionStepDefinitionDict;
-export const reactAssertions = wrapInActAsync(
-  createDefaultAssertions(),
-) as AssertionStepDefinitionDict;
+export const reactActions = wrapInActAsync(createDefaultActions());
+export const reactAssertions = wrapInActAsync(createDefaultAssertions());
 
 export function createReactFakeTimerScopedRegistries<
   TActions extends ActionStepDefinitionDict,

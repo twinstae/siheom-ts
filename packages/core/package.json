@@ -48,6 +48,16 @@
         "default": "./dist/cjs/effect.cjs"
       }
     },
+    "./imperative": {
+      "import": {
+        "types": "./dist/esm/imperative.d.ts",
+        "default": "./dist/esm/imperative.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/imperative.d.cts",
+        "default": "./dist/cjs/imperative.cjs"
+      }
+    },
     "./with-fake-timers": {
       "import": {
         "types": "./dist/esm/withFakeTimers.d.ts",
@@ -76,6 +86,9 @@
       ],
       "effect": [
         "./dist/esm/effect.d.ts"
+      ],
+      "imperative": [
+        "./dist/esm/imperative.d.ts"
       ],
       "with-fake-timers": [
         "./dist/esm/withFakeTimers.d.ts"

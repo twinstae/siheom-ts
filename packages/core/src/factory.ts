@@ -18,14 +18,14 @@ export type SiheomFactoryRegistries<
   TEffects extends EffectStepDefinitionDict = EffectStepDefinitionDict,
 > = SiheomRegistries<TActions, TAssertions, TGivens, TEffects>;
 
-type LocatorTargetStep = (target: Locator, ...args: never[]) => Promise<void>;
+export type LocatorTargetStep = (target: Locator, ...args: never[]) => Promise<void>;
 
 /**
  * Strip index signatures that appear when a type param extends `Record<string, _>`.
  * Keeps literal keys so bindings stay required under `noUncheckedIndexedAccess`.
  * @see https://github.com/sindresorhus/type-fest/blob/main/source/omit-index-signature.d.ts
  */
-type OmitIndexSignature<ObjectType> = {
+export type OmitIndexSignature<ObjectType> = {
   [KeyType in keyof ObjectType as {} extends Record<KeyType, unknown>
     ? never
     : KeyType]: ObjectType[KeyType];

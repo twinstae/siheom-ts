@@ -6,6 +6,7 @@ const options = createTsdownBuildOptions({
     "src/index.ts",
     "src/siheom.ts",
     "src/effect.ts",
+    "src/imperative.ts",
     "src/withFakeTimers.ts",
     "src/a11y/ariaRoles.ts",
   ],
