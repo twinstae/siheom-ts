@@ -32,7 +32,7 @@
     "tsconfig-custom": "workspace:*",
     "typescript": "^5.9.3",
     "vite": "^8.2.0",
-    "vitest": "^4.1.10",
+    "vitest": "^4.1.11",
     "vitest-native": "^0.8.0"
   }
 }

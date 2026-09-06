@@ -19,7 +19,7 @@ siheom은 **vitest browser mode**(Playwright provider)에서 실제 Chromium 등
 ```bash
 yarn add -D vitest @vitest/browser playwright
 yarn playwright install chromium
-yarn add @siheom/angular @angular/core @angular/common @angular/platform-browser @angular/platform-browser-dynamic
+yarn add @siheom/angular @angular/core @angular/common @angular/compiler @angular/platform-browser
 yarn add @testing-library/angular @testing-library/jest-dom @testing-library/user-event
 ```
 
@@ -47,13 +47,11 @@ Angular는 `TestBed`를 JIT 컴파일 환경으로 초기화해야 합니다. `t
 
 ```ts
 import "@testing-library/jest-dom/vitest";
+import "@angular/compiler";
 import { TestBed } from "@angular/core/testing";
-import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
-} from "@angular/platform-browser-dynamic/testing";
+import { BrowserTestingModule, platformBrowserTesting } from "@angular/platform-browser/testing";
 
-TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
+TestBed.initTestEnvironment(BrowserTestingModule, platformBrowserTesting());
 ```
 
 실행:
