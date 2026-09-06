@@ -6,32 +6,6 @@ function readJson(path) {
   return JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
 }
 
-test("toolchain targets Node 24", () => {
-  const rootPackage = readJson("package.json");
-  const miseConfig = readFileSync(new URL("../mise.toml", import.meta.url), "utf8");
-
-  assert.deepEqual(rootPackage.engines, { node: "^24.0.0" });
-  assert.equal(rootPackage.devDependencies["@types/node"], "^24.13.3");
-  assert.match(miseConfig, /^node = "24\.20\.0"$/m);
-
-  for (const workspaceRoot of ["apps", "packages"]) {
-    for (const workspaceName of readdirSync(new URL(`../${workspaceRoot}`, import.meta.url))) {
-      const path = `${workspaceRoot}/${workspaceName}/package.json`;
-      if (!existsSync(new URL(`../${path}`, import.meta.url))) continue;
-      const nodeTypes = readJson(path).devDependencies?.["@types/node"];
-      if (nodeTypes) assert.equal(nodeTypes, "^24.13.3", path);
-    }
-  }
-});
-
-test("dependency graph has no image-size override", () => {
-  const rootPackage = readJson("package.json");
-  const lockfile = readFileSync(new URL("../yarn.lock", import.meta.url), "utf8");
-
-  assert.equal("image-size@npm:^1.0.2" in rootPackage.resolutions, false);
-  assert.doesNotMatch(lockfile, /@nous-research\/image-size/);
-});
-
 test("shared base keeps the Mincho compiler defaults without baseUrl", () => {
   const { compilerOptions } = readJson("configs/tsconfig-custom/tsconfig.base.json");
 

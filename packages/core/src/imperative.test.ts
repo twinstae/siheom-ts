@@ -6,7 +6,14 @@ import {
   defaultEffects,
   type Locator,
 } from "./index.ts";
-import { createImperativeSiheom, actions, assertions, effect, query, withFakeTimers } from "./imperative.ts";
+import {
+  createImperativeSiheom,
+  actions,
+  assertions,
+  effect,
+  query,
+  withFakeTimers,
+} from "./imperative.ts";
 
 async function captureError(run: () => Promise<void>): Promise<Error> {
   try {

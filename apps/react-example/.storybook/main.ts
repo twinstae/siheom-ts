@@ -1,16 +1,19 @@
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
 
+// Keep resolution local to this workspace so Yarn PnP uses its dependencies.
+function getAbsolutePath(packageName: string): string {
+  return dirname(fileURLToPath(import.meta.resolve(`${packageName}/package.json`)));
+}
+
 const config: StorybookConfig = {
-	stories: ["../test/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-	addons: [],
-	framework: "@storybook/react-vite",
-	core: {
-		builder: {
-			name: "@storybook/builder-vite",
-			options: {
-				viteConfigPath: "./vite.config.ts",
-			},
-		},
-	},
+  stories: ["../test/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  addons: [],
+  framework: getAbsolutePath("@storybook/react-vite"),
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
+  },
 };
+
 export default config;
