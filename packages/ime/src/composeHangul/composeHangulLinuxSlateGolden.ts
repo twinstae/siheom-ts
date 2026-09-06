@@ -1,6 +1,6 @@
-import type { ComposedEventRecord } from "../_internal";
-import { replayGoldenEvents } from "../replayGoldenEvents";
-import { isEditable } from "../withPresentElement";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { replayGoldenEvents } from "../replayGoldenEvents/index.js";
+import { isEditable } from "../withPresentElement/index.js";
 import lcPlaceholderGolden from "../../fixtures/linux-chrome-slate-placeholder-fixed/first-hangul-가.json";
 import lcPlainGolden from "../../fixtures/linux-chrome-slate-plain-control/first-hangul-가.json";
 import lfPlaceholderGolden from "../../fixtures/linux-firefox-slate-placeholder-fixed/first-hangul-가.json";

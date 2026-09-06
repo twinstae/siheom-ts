@@ -1,1 +1,1 @@
-export { toCriticalEvents } from "./toCriticalEvents";
+export { toCriticalEvents } from "./toCriticalEvents.js";

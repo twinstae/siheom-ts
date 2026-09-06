@@ -1,4 +1,4 @@
-import type { ComposedEventRecord } from "../_internal/types";
+import type { ComposedEventRecord } from "../_internal/types.js";
 
 /** Experiment B — event + expected DOM snapshot per step (device capture shape). */
 export type DualTraceStep = {

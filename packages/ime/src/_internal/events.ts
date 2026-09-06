@@ -1,4 +1,4 @@
-import type { ComposedEventRecord } from "./types";
+import type { ComposedEventRecord } from "./types.js";
 
 export function setInputValue(
   element: HTMLInputElement | HTMLTextAreaElement,

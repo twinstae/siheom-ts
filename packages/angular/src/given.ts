@@ -1,9 +1,8 @@
 import { render } from "@testing-library/angular";
-import type { ComponentFixture } from "@angular/core/testing";
 import type { GivenStep } from "@siheom/core";
 import type { Type } from "@angular/core";
 
-let activeFixture: ComponentFixture<unknown> | undefined;
+let activeFixture: Awaited<ReturnType<typeof render>>["fixture"] | undefined;
 
 export function detectChanges() {
   activeFixture?.detectChanges();

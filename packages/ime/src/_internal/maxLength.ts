@@ -1,4 +1,4 @@
-import { getImeSession, setImeSession } from "./session";
+import { getImeSession, setImeSession } from "./session.js";
 
 export function readMaxLength(element: HTMLInputElement | HTMLTextAreaElement): number | null {
   const limit = element.maxLength;

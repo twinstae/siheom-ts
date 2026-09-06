@@ -1,5 +1,5 @@
 import type { Locator } from "@siheom/core";
-import { locatorLog } from "./queryBuilders.ts";
+import { locatorLog } from "./queryBuilders.js";
 
 export const actions = {
   click: (target: Locator) =>

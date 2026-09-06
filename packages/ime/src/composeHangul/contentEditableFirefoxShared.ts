@@ -1,6 +1,6 @@
-import type { EventPlanStep } from "../_internal/eventPlan";
-import type { KeyEventFields } from "../_internal/events";
-import { planPreedit } from "../_internal/planPreedit";
+import type { EventPlanStep } from "../_internal/eventPlan.js";
+import type { KeyEventFields } from "../_internal/events.js";
+import { planPreedit } from "../_internal/planPreedit.js";
 
 /** Firefox contenteditable: NBSP composition sentinel + trailing ZWSP in OS captures. */
 export const FIREFOX_CE_SENTINEL = "\u00a0\u200b";

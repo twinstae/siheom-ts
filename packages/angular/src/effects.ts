@@ -1,6 +1,6 @@
 import { vi } from "vitest";
 import type { EffectStepDefinitionDict } from "@siheom/core";
-import { detectChanges } from "./given.ts";
+import { detectChanges } from "./given.js";
 
 export const angularEffects = {
   elapsed: async (ms: number) => {

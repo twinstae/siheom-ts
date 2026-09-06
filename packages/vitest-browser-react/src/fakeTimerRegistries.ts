@@ -4,7 +4,7 @@ import {
   type SiheomRegistryBundle,
 } from "@siheom/core";
 import { vi } from "vitest";
-import { createBrowserActions } from "./action.ts";
+import { createBrowserActions } from "./action.js";
 
 export function createBrowserFakeTimerScopedRegistries<
   TActions extends import("@siheom/core").ActionStepDefinitionDict,

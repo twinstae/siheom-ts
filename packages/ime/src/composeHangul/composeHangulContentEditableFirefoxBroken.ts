@@ -1,18 +1,18 @@
 import { disassemble } from "es-hangul";
 
-import { planHangulKeystrokes } from "../planHangulKeystrokes";
-import type { ComposedEventRecord } from "../_internal";
-import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace";
-import { playEventPlan, type EventPlanStep } from "../_internal/eventPlan";
-import { ImeTrace } from "../_internal/imeTrace";
-import { isEditable } from "../withPresentElement";
+import { planHangulKeystrokes } from "../planHangulKeystrokes/index.js";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace.js";
+import { playEventPlan, type EventPlanStep } from "../_internal/eventPlan.js";
+import { ImeTrace } from "../_internal/imeTrace.js";
+import { isEditable } from "../withPresentElement/index.js";
 import {
   FIREFOX_CE_SENTINEL,
   planContentEditablePreeditPulse,
   planDuplicateCompositionPulse,
   planFirefoxDeferredEnd,
   withZwsp,
-} from "./contentEditableFirefoxShared";
+} from "./contentEditableFirefoxShared.js";
 
 /** Plan preedit snapshots for broken Firefox contenteditable mode (first syllable stays jamo). */
 export function planContentEditableBrokenPreeditSequence(text: string): string[] {

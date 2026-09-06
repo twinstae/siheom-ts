@@ -1,5 +1,5 @@
-import type { EventPlanStep } from "./eventPlan";
-import { planPreedit } from "./planPreedit";
+import type { EventPlanStep } from "./eventPlan.js";
+import { planPreedit } from "./planPreedit.js";
 
 export type PlanSafariInsertOptions = {
   clearedCaret?: number;

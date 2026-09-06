@@ -9,7 +9,6 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   plugins: [
     svelte({
-      hot: !process.env.VITEST,
       dynamicCompileOptions({ filename }) {
         if (filename.includes("node_modules")) {
           return { runes: false };

@@ -4,9 +4,9 @@ import {
   playEventPlan,
   readMaxLength,
   type ComposedEventRecord,
-} from "../_internal";
-import { resolveProfile, type ImeProfile } from "../profiles";
-import { planHanjaConversion } from "./planHanja";
+} from "../_internal/index.js";
+import { resolveProfile, type ImeProfile } from "../profiles/index.js";
+import { planHanjaConversion } from "./planHanja.js";
 
 export type ComposeHanjaConversionOptions = {
   hangul: string;

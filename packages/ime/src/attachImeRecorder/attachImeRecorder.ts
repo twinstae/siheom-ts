@@ -1,5 +1,5 @@
-import type { ComposedEventRecord } from "../_internal";
-import { readEditableText } from "../_internal/editableElement";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { readEditableText } from "../_internal/editableElement.js";
 
 const IME_EVENT_TYPES = [
   "keydown",

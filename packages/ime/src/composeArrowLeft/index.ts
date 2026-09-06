@@ -1,1 +1,1 @@
-export { composeArrowLeft } from "./composeArrowLeft";
+export { composeArrowLeft } from "./composeArrowLeft.js";

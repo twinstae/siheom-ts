@@ -1,6 +1,6 @@
 import { planHangulKeystrokes } from "@siheom/ime";
 
-import { getVitestCdpSession, type CdpSend } from "../cdpSession";
+import { getVitestCdpSession, type CdpSend } from "../cdpSession/index.js";
 
 export type ComposeHangulCdpOptions = {
   session?: CdpSend;

@@ -1,8 +1,8 @@
-import type { ImeTrace } from "../_internal/imeTrace";
-import { playEventPlan } from "../_internal/eventPlan";
-import { readMaxLength } from "../_internal/maxLength";
-import type { ImeProfile } from "../profiles";
-import { planChromePreeditStep } from "./planStroke";
+import type { ImeTrace } from "../_internal/imeTrace.js";
+import { playEventPlan } from "../_internal/eventPlan.js";
+import { readMaxLength } from "../_internal/maxLength.js";
+import type { ImeProfile } from "../profiles/index.js";
+import { planChromePreeditStep } from "./planStroke.js";
 
 /** Observe DOM facts and play one composition preedit step (session + preedit pulse). */
 export function playPreeditStep(

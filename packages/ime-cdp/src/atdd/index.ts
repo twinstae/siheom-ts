@@ -1,7 +1,7 @@
-export { buildChromiumCdpTrace, diffCriticalTraces } from "./atdd.ts";
+export { buildChromiumCdpTrace, diffCriticalTraces } from "./atdd.js";
 export type {
   ChromiumCdpTrace,
   ChromiumCdpTraceSource,
   CriticalEvent,
   CriticalTraceDiff,
-} from "./atdd.ts";
+} from "./atdd.js";

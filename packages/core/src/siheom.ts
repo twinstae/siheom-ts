@@ -11,12 +11,12 @@ import type {
   GivenStepDefinitionDict,
   Locator,
   Step,
-} from "./types";
-import { getA11ySnapshot } from "./getA11ySnapshot";
-import { formatFailureReport, type MessageMap } from "./messages.ts";
-import type { FakeTimerScopeHooks, SiheomRegistryBundle } from "./fakeTimerScope.ts";
+} from "./types.js";
+import { getA11ySnapshot } from "./getA11ySnapshot.js";
+import { formatFailureReport, type MessageMap } from "./messages.js";
+import type { FakeTimerScopeHooks, SiheomRegistryBundle } from "./fakeTimerScope.js";
 
-export type { FakeTimerScopeHooks, SiheomRegistryBundle } from "./fakeTimerScope.ts";
+export type { FakeTimerScopeHooks, SiheomRegistryBundle } from "./fakeTimerScope.js";
 
 export type SiheomRegistries<
   TActions extends ActionStepDefinitionDict = ActionStepDefinitionDict,
@@ -182,7 +182,7 @@ async function runFakeTimersScope<
   installFakeTimers();
   try {
     const { createFakeTimerScopedRegistries: createDefaultScopedRegistries } =
-      await import("./fakeTimerScope.ts");
+      await import("./fakeTimerScope.js");
     const scopeRegistries =
       registries.createFakeTimerScopedRegistries ?? createDefaultScopedRegistries;
     const scopedRegistries = scopeRegistries(registries);

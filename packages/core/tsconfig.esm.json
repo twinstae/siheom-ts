@@ -1,0 +1,7 @@
+{
+  "extends": "tsconfig-custom/tsconfig.lib.esm.json",
+  "compilerOptions": {
+    "types": ["@testing-library/jest-dom/vitest"]
+  },
+  "exclude": ["**/*.test.ts", "**/*.spec.ts", "src/testSetup.ts", "vitest.config.ts", "html-raw.d.ts"]
+}

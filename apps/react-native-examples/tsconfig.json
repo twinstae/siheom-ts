@@ -1,25 +1,17 @@
 {
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "es2022",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "allowImportingTsExtensions": true,
-    "module": "Preserve",
-    "noEmit": true,
-    "lib": ["ES2022", "DOM"],
-    "paths": {
-      "@/*": ["./test/*"],
-      "@siheom/react-native": ["../../packages/react-native/src/index.ts"]
+  "files": [],
+  "references": [
+    {
+      "path": "../../packages/react-native"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.test.json"
     }
-  },
-  "include": ["test", ".storybook"]
+  ]
 }

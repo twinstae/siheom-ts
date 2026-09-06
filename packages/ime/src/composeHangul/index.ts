@@ -1,2 +1,2 @@
-export { composeHangul } from "./composeHangul";
-export type { ComposeHangulOptions, ComposedEventRecord } from "./composeHangul";
+export { composeHangul } from "./composeHangul.js";
+export type { ComposeHangulOptions, ComposedEventRecord } from "./composeHangul.js";

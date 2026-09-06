@@ -3,7 +3,7 @@ export {
   getRegisteredProfileIds,
   registerProfile,
   resolveProfile,
-} from "./profiles";
+} from "./profiles.js";
 export type {
   EnterDuringCompositionFacet,
   HangulComposeMode,
@@ -12,4 +12,4 @@ export type {
   HangulKeyEventKey,
   HanjaConversionMode,
   ImeProfile,
-} from "./profiles";
+} from "./profiles.js";

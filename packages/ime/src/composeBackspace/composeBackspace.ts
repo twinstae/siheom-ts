@@ -1,7 +1,7 @@
-import type { ComposedEventRecord } from "../_internal";
-import { getImeSession, ImeTrace, playEventPlan, readMaxLength } from "../_internal";
-import { resolveProfile, type ImeProfile } from "../profiles";
-import { planBackspace } from "./planBackspace";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { getImeSession, ImeTrace, playEventPlan, readMaxLength } from "../_internal/index.js";
+import { resolveProfile, type ImeProfile } from "../profiles/index.js";
+import { planBackspace } from "./planBackspace.js";
 
 /**
  * Hangul IME Backspace: decompose preedit while composing; otherwise deleteContentBackward.

@@ -1,2 +1,2 @@
-export { planHangulKeystrokes, withSuffix } from "./planHangulKeystrokes";
-export type { HangulKeyStroke, PlanHangulKeystrokesOptions } from "./planHangulKeystrokes";
+export { planHangulKeystrokes, withSuffix } from "./planHangulKeystrokes.js";
+export type { HangulKeyStroke, PlanHangulKeystrokesOptions } from "./planHangulKeystrokes.js";

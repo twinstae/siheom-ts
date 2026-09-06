@@ -1,15 +1,15 @@
-import { createRunSiheom, type SiheomRegistries } from "./siheom.ts";
-import { query, locatorLog } from "./query.ts";
-import type { MessageMap } from "./messages.ts";
+import { createRunSiheom, type SiheomRegistries } from "./siheom.js";
+import { query, locatorLog } from "./query.js";
+import type { MessageMap } from "./messages.js";
 import type {
   ActionStepDefinitionDict,
   AssertionStepDefinitionDict,
   EffectStepDefinitionDict,
   GivenStepDefinitionDict,
   Locator,
-} from "./types.ts";
+} from "./types.js";
 
-export type { MessageMap } from "./messages.ts";
+export type { MessageMap } from "./messages.js";
 
 export type SiheomFactoryRegistries<
   TActions extends ActionStepDefinitionDict = ActionStepDefinitionDict,

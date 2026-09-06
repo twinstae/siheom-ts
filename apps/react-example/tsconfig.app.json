@@ -1,0 +1,21 @@
+{
+  "extends": "tsconfig-custom/tsconfig.app.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": ".cache/typescript-app-buildinfo",
+    "jsx": "preserve",
+    "paths": {
+      "@/*": ["./test/*"],
+      "@test/*": ["./test/*"],
+      "@showcase/tanstack-link": ["./test/stories/routing/tanstack-router/stubs/link.tsx"]
+    }
+  },
+  "include": ["test"],
+  "exclude": ["test/**/*.test.ts", "test/**/*.test.tsx", "test/**/*.spec.ts", "test/**/*.spec.tsx", "test/**/*.stories.ts", "test/**/*.stories.tsx", "test/setupTests*.ts"],
+  "references": [
+    { "path": "../../packages/core/tsconfig.esm.json" },
+    { "path": "../../packages/ime/tsconfig.esm.json" },
+    { "path": "../../packages/ime-cdp/tsconfig.esm.json" },
+    { "path": "../../packages/react/tsconfig.esm.json" },
+    { "path": "../../packages/vitest-browser-react/tsconfig.esm.json" }
+  ]
+}

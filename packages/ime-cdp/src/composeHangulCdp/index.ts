@@ -1,2 +1,2 @@
-export { composeHangulCdp } from "./composeHangulCdp.ts";
-export type { ComposeHangulCdpOptions } from "./composeHangulCdp.ts";
+export { composeHangulCdp } from "./composeHangulCdp.js";
+export type { ComposeHangulCdpOptions } from "./composeHangulCdp.js";

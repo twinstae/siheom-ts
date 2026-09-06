@@ -1,5 +1,5 @@
 import { vi } from "vitest";
-import type { EffectStep, EffectStepDefinitionDict } from "./types.ts";
+import type { EffectStep, EffectStepDefinitionDict } from "./types.js";
 
 export const defaultEffects = {
   elapsed: async (ms: number) => {

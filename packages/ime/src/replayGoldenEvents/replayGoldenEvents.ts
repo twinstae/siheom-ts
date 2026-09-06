@@ -1,16 +1,16 @@
-import type { ComposedEventRecord } from "../_internal/types";
-import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace";
-import { setInputValue } from "../_internal/events";
-import type { KeyEventFields } from "../_internal/events";
-import type { ImeTraceEmitter, InputEventFields } from "../_internal/imeTrace";
-import { ImeTrace } from "../_internal/imeTrace";
-import { isEditable } from "../withPresentElement";
-import { settleAfterPreedit } from "../composeHangul/settle";
+import type { ComposedEventRecord } from "../_internal/types.js";
+import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace.js";
+import { setInputValue } from "../_internal/events.js";
+import type { KeyEventFields } from "../_internal/events.js";
+import type { ImeTraceEmitter, InputEventFields } from "../_internal/imeTrace.js";
+import { ImeTrace } from "../_internal/imeTrace.js";
+import { isEditable } from "../withPresentElement/index.js";
+import { settleAfterPreedit } from "../composeHangul/settle.js";
 import {
   applyGoldenDomWriteback,
   stripGoldenText,
   type GoldenWritebackMode,
-} from "./goldenDomWriteback";
+} from "./goldenDomWriteback.js";
 
 function stripZwsp(text: string): string {
   return stripGoldenText(text);

@@ -2,7 +2,7 @@ import { fireEvent, userEvent, waitFor } from "@testing-library/react-native";
 import type { TestInstance } from "test-renderer";
 import type { ActionStepDefinitionDict, Locator } from "@siheom/core";
 import { expect } from "vitest";
-import { getElement } from "./query.ts";
+import { getElement } from "./query.js";
 
 type DefaultActionsOptions = {
   resolveElement?: "sync" | "waitFor";

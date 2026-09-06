@@ -1,1 +1,1 @@
-export { hangulValueProgression } from "./hangulValueProgression";
+export { hangulValueProgression } from "./hangulValueProgression.js";

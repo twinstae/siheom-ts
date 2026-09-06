@@ -1,1 +1,1 @@
-export { hangulJamos } from "./hangulJamos";
+export { hangulJamos } from "./hangulJamos.js";

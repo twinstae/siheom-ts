@@ -1,0 +1,8 @@
+{
+  "extends": "tsconfig-custom/tsconfig.lib.cjs.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
+  },
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx", "src/testSetup.ts", "vitest.config.ts", "html-raw.d.ts"]
+}

@@ -1,7 +1,7 @@
-import type { ComposedEventRecord } from "./types";
-import { dispatch, type KeyEventFields } from "./events";
-import { readEditableText } from "./editableElement";
-import type { ImeTraceEmitter, InputEventFields } from "./imeTrace";
+import type { ComposedEventRecord } from "./types.js";
+import { dispatch, type KeyEventFields } from "./events.js";
+import { readEditableText } from "./editableElement.js";
+import type { ImeTraceEmitter, InputEventFields } from "./imeTrace.js";
 
 /** IME trace for contenteditable targets — events only, no session/value writeback. */
 export class ContentEditableImeTrace implements ImeTraceEmitter {

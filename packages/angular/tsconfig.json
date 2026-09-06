@@ -1,21 +1,20 @@
 {
-  "compilerOptions": {
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "es2022",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "allowImportingTsExtensions": true,
-    "module": "Preserve",
-    "noEmit": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"]
-  },
-  "include": ["src"]
+  "files": [],
+  "references": [
+    {
+      "path": "../core"
+    },
+    {
+      "path": "./tsconfig.cjs.json"
+    },
+    {
+      "path": "./tsconfig.esm.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.test.json"
+    }
+  ]
 }

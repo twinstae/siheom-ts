@@ -9,6 +9,9 @@
   },
   "type": "module",
   "packageManager": "yarn@4.18.0",
+  "engines": {
+    "node": "^24.0.0"
+  },
   "license": "MIT",
   "author": "Taehee Kim <rabolution@gmail.com> (https://x.com/stelo_kim)",
   "repository": {
@@ -17,15 +20,18 @@
   },
   "workspaces": [
     "packages/*",
-    "apps/*"
+    "apps/*",
+    "configs/*"
   ],
   "scripts": {
     "postinstall": "playwright install chromium",
-    "ci": "yarn check-format && yarn build && yarn npm audit --all --recursive --no-deprecations && yarn lint && yarn check-exports && yarn typecheck && yarn test",
+    "ci": "yarn check-format && yarn sync:check && yarn build && yarn npm audit --all --recursive --no-deprecations && yarn lint && yarn check-exports && yarn typecheck && yarn test",
     "build": "yarn workspace @siheom/core build && yarn workspace @siheom/react build && yarn workspace @siheom/vue build && yarn workspace @siheom/svelte build && yarn workspace @siheom/solid build && yarn workspace @siheom/angular build && yarn workspace @siheom/qwik build && yarn workspace @siheom/react-native build && yarn workspace @siheom/ime build && yarn workspace @siheom/ime-cdp build && yarn workspace @siheom/vitest-browser-react build && yarn workspace @siheom/virtual-screen-reader build",
     "check-exports": "yarn workspace @siheom/core check-exports && yarn workspace @siheom/react check-exports && yarn workspace @siheom/vue check-exports && yarn workspace @siheom/svelte check-exports && yarn workspace @siheom/solid check-exports && yarn workspace @siheom/angular check-exports && yarn workspace @siheom/qwik check-exports && yarn workspace @siheom/react-native check-exports && yarn workspace @siheom/ime check-exports && yarn workspace @siheom/ime-cdp check-exports && yarn workspace @siheom/vitest-browser-react check-exports && yarn workspace @siheom/virtual-screen-reader check-exports",
-    "typecheck": "yarn workspace @siheom/core typecheck && yarn workspace @siheom/react typecheck && yarn workspace @siheom/vue typecheck && yarn workspace @siheom/svelte typecheck && yarn workspace @siheom/solid typecheck && yarn workspace @siheom/angular typecheck && yarn workspace @siheom/qwik typecheck && yarn workspace @siheom/react-native typecheck && yarn workspace @siheom/ime typecheck && yarn workspace @siheom/ime-cdp typecheck && yarn workspace @siheom/react-example typecheck && yarn workspace @siheom/react-native-examples typecheck && yarn workspace @siheom/vitest-browser-react typecheck && yarn workspace @siheom/virtual-screen-reader typecheck",
-    "test": "yarn workspace @siheom/core test && yarn workspace @siheom/react test && yarn workspace @siheom/vue test && yarn workspace @siheom/svelte test && yarn workspace @siheom/solid test && yarn workspace @siheom/angular test && yarn workspace @siheom/qwik test && yarn workspace @siheom/ime test && yarn workspace @siheom/ime-cdp test && yarn workspace @siheom/react-example test && yarn workspace @siheom/react-native test && yarn workspace @siheom/react-native-examples test && yarn workspace @siheom/vitest-browser-react test && yarn workspace @siheom/virtual-screen-reader test",
+    "typecheck": "tsc --build",
+    "test": "yarn test:validate-configs && yarn test:validate-artifacts && yarn workspace @siheom/core test && yarn workspace @siheom/react test && yarn workspace @siheom/vue test && yarn workspace @siheom/svelte test && yarn workspace @siheom/solid test && yarn workspace @siheom/angular test && yarn workspace @siheom/qwik test && yarn workspace @siheom/ime test && yarn workspace @siheom/ime-cdp test && yarn workspace @siheom/react-example test && yarn workspace @siheom/react-native test && yarn workspace @siheom/react-native-examples test && yarn workspace @siheom/vitest-browser-react test && yarn workspace @siheom/virtual-screen-reader test",
+    "test:validate-configs": "yarn node --test scripts/validate-typescript-configs.test.mjs",
+    "test:validate-artifacts": "yarn node --test scripts/validate-typescript-artifacts.test.mjs",
     "docs": "yarn workspace @siheom/docs dev",
     "docs:build": "yarn workspace @siheom/docs build",
     "check-format": "oxfmt --check packages/*/src apps/react-example/test apps/react-native-examples/test",
@@ -40,18 +46,25 @@
     "install:nose": "bash scripts/install-nose.sh",
     "dup:jscpd": "jscpd packages/core/src packages/react/src packages/ime/src packages/ime-cdp/src apps/react-example/test",
     "dup:nose": "nose query -r packages/core/src -r packages/react/src -r packages/ime/src -r packages/ime-cdp/src -r apps/react-example/test top=20 --exclude '**/stories/headless/**' --exclude '**/components/ariakit/**' --exclude '**/components/ark-ui/**' --exclude '**/components/radix/**' --exclude '**/components/react-aria/**' --exclude '**/components/ui/**'",
-    "dup": "yarn dup:jscpd && yarn dup:nose"
+    "dup": "yarn dup:jscpd && yarn dup:nose",
+    "sync": "workspaces-to-typescript-project-references --includesRoot --includesLocal",
+    "sync:check": "workspaces-to-typescript-project-references --check --includesRoot --includesLocal"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.5",
     "@changesets/cli": "^2.31.1",
+    "@monorepo-utils/workspaces-to-typescript-project-references": "^2.11.0",
+    "@types/node": "^24.13.3",
     "@vitest/browser": "^4.1.10",
     "@vitest/browser-playwright": "^4.1.10",
     "jscpd": "^5.0.14",
     "oxfmt": "^0.61.0",
     "oxlint": "^1.76.0",
     "playwright": "^1.62.1",
+    "tsconfig-custom": "workspace:*",
     "typescript": "^5.9.3",
+    "vite": "^8.2.0",
+    "vite-plugin-dts-build": "^0.2.3",
     "vitest": "^4.1.10"
   },
   "resolutions": {

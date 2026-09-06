@@ -1,1 +1,1 @@
-export { composeBackspace } from "./composeBackspace";
+export { composeBackspace } from "./composeBackspace.js";

@@ -1,4 +1,4 @@
-import type { HangulKeyStroke } from "../planHangulKeystrokes";
+import type { HangulKeyStroke } from "../planHangulKeystrokes/index.js";
 import {
   clearImeSession,
   hangulKeydownFields,
@@ -11,12 +11,12 @@ import {
   readMaxLength,
   replacementInputType,
   type ComposedEventRecord,
-} from "../_internal";
-import { consumeImeControlledWriteback } from "../markImeControlledWriteback";
-import type { ImeProfile } from "../profiles";
+} from "../_internal/index.js";
+import { consumeImeControlledWriteback } from "../markImeControlledWriteback/index.js";
+import type { ImeProfile } from "../profiles/index.js";
 
-import type { ComposeHangulOptions } from "./composeHangul";
-import { playPreeditStep } from "./playPreeditStep";
+import type { ComposeHangulOptions } from "./composeHangul.js";
+import { playPreeditStep } from "./playPreeditStep.js";
 import {
   decideSafariOverflow,
   decideStrokeStepOutcome,
@@ -25,8 +25,8 @@ import {
   planSafariOverflowReject,
   planSafariStrokeCompositionStart,
   planSafariStrokeKeys,
-} from "./planStroke";
-import { settleAfterPreedit } from "./settle";
+} from "./planStroke.js";
+import { settleAfterPreedit } from "./settle.js";
 
 function shouldConfirmAfterStroke(strokes: HangulKeyStroke[], index: number): boolean {
   const next = strokes[index + 1];

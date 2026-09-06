@@ -1,11 +1,11 @@
 import { assemble, disassembleCompleteCharacter } from "es-hangul";
 
-import { hangulJamos } from "../hangulJamos";
-import type { EventPlanStep } from "../_internal/eventPlan";
-import { normalizeJungseong } from "../_internal/normalizeJungseong";
-import { planPostCompositionEndInput, planPreedit } from "../_internal/planPreedit";
-import type { ImeComposeSession } from "../_internal/session";
-import type { HangulKeyboardLayout } from "../profiles";
+import { hangulJamos } from "../hangulJamos/index.js";
+import type { EventPlanStep } from "../_internal/eventPlan.js";
+import { normalizeJungseong } from "../_internal/normalizeJungseong.js";
+import { planPostCompositionEndInput, planPreedit } from "../_internal/planPreedit.js";
+import type { ImeComposeSession } from "../_internal/session.js";
+import type { HangulKeyboardLayout } from "../profiles/index.js";
 
 function shrinkDubeolsikPreedit(preedit: string): string {
   const jamos = hangulJamos(preedit);

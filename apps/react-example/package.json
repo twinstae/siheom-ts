@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "vitest run",
+    "test": "vitest run test/stories/ime-bugs/candidate-conversion test/stories/ime-bugs/cdp-smoke test/stories/ime-bugs/delayed-update test/stories/ime-bugs/enter-submit test/stories/ime-bugs/focus-steal && vitest run test/stories/ime-bugs/lexical test/stories/ime-bugs/maxlength test/stories/ime-bugs/slate test/stories/ime-bugs/tiptap && vitest run test/stories/Counter.test.tsx test/stories/DeleteDialog.test.tsx test/stories/Relations.test.tsx test/stories/SignUpForm.test.tsx test/stories/countdown test/stories/headless test/stories/ime-logger test/stories/routing && vitest run test/stories/shadcn/app-shell test/stories/shadcn/billing-alert test/stories/shadcn/chart-dashboard test/stories/shadcn/command-menu test/stories/shadcn/document-actions test/stories/shadcn/kanban test/stories/shadcn/llm-chat test/stories/shadcn/meeting-booking test/stories/shadcn/mobile-filter && vitest run test/stories/shadcn/notice-search test/stories/shadcn/order-tracking test/stories/shadcn/profile-avatar test/stories/shadcn/save-feedback test/stories/shadcn/settings test/stories/shadcn/task-table test/stories/shadcn/team-invite test/stories/shadcn/two-factor test/stories/shadcn/view-switcher test/stories/todomvc",
     "test:vitest-browser-react": "vitest run --config vite.vitest-browser-react.config.ts",
     "vitest": "vitest",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck": "tsc --build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -60,6 +60,7 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@tiptap/core": "^3.29.2",
+    "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.0.5",
@@ -74,6 +75,7 @@
     "storybook": "^10.5.5",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.3",
+    "tsconfig-custom": "workspace:*",
     "typescript": "^5.9.3",
     "valibot": "^1.4.2",
     "vite": "^8.2.0",

@@ -1,6 +1,6 @@
-import type { ImeComposeSession } from "./session";
-import type { EventPlanStep } from "./eventPlan";
-import { planPostCompositionEndInput, planPreedit } from "./planPreedit";
+import type { ImeComposeSession } from "./session.js";
+import type { EventPlanStep } from "./eventPlan.js";
+import { planPostCompositionEndInput, planPreedit } from "./planPreedit.js";
 
 export type PlanConfirmFacts = {
   valueBefore: string;

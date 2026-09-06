@@ -1,0 +1,5 @@
+{
+  "extends": "tsconfig-custom/tsconfig.lib.cjs.json",
+  "include": ["src", "vitest-browser.d.ts"],
+  "exclude": ["**/*.test.ts", "**/*.spec.ts", "src/testSetup.ts", "vitest.config.ts"]
+}

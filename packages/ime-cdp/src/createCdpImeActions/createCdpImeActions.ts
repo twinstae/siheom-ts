@@ -2,8 +2,8 @@ import { type ActionStepDefinitionDict, type Locator } from "@siheom/core";
 import { isEditable, planTypeImeSteps, withPresentElement } from "@siheom/ime";
 import { userEvent } from "vitest/browser";
 
-import { composeHangulCdp, type ComposeHangulCdpOptions } from "../composeHangulCdp";
-import type { CdpSend } from "../cdpSession";
+import { composeHangulCdp, type ComposeHangulCdpOptions } from "../composeHangulCdp/index.js";
+import type { CdpSend } from "../cdpSession/index.js";
 
 export type CreateCdpImeActionsOptions = {
   resolveElement?: "sync" | "waitFor";

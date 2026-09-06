@@ -1,10 +1,10 @@
-import type { EventPlanStep } from "../_internal/eventPlan";
-import type { ImeComposeSession } from "../_internal/session";
+import type { EventPlanStep } from "../_internal/eventPlan.js";
+import type { ImeComposeSession } from "../_internal/session.js";
 import {
   planConfirmAndEndComposition,
   type PlanConfirmFacts,
-} from "../_internal/planConfirmComposition";
-import type { EnterDuringCompositionFacet } from "../profiles";
+} from "../_internal/planConfirmComposition.js";
+import type { EnterDuringCompositionFacet } from "../profiles/index.js";
 
 export type PlanArrowLeftInput = {
   composing: boolean;

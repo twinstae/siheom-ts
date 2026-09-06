@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.lib.esm.json",
+  "compilerOptions": {
+    "incremental": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": false,
+    "emitDeclarationOnly": false,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "rootDir": "${configDir}",
+    "types": ["node", "vitest/globals"]
+  },
+  "include": ["${configDir}/src", "${configDir}/*.d.ts", "${configDir}/**/*.json"]
+}

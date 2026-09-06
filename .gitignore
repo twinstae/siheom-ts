@@ -13,6 +13,7 @@ test/stories/__screenshots__
 storybook-static
 
 packages/*/dist
+**/.cache/
 apps/*/dist
 apps/*/storybook-static
 **/__screenshots__/*

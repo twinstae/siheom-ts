@@ -1,0 +1,10 @@
+{
+  "extends": "tsconfig-custom/tsconfig.lib.cjs.json",
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "src/testHelpers.ts",
+    "src/testSetup.ts",
+    "vitest.config.ts"
+  ]
+}

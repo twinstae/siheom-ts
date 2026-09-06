@@ -1,0 +1,14 @@
+{
+  "extends": "tsconfig-custom/tsconfig.lib.cjs.json",
+  "compilerOptions": {
+    "jsx": "preserve"
+  },
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "src/testSetup.ts",
+    "vitest.config.ts"
+  ]
+}

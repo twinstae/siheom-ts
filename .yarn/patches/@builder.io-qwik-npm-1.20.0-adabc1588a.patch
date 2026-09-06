@@ -1,0 +1,10 @@
+diff --git a/dist/jsx-runtime.d.ts b/dist/jsx-runtime.d.ts
+index 9bbec53248c0152f1d3fa858125d98ecd512ec1d..5799b20ce345494fc8512dda61ae4bcefc1017cf 100644
+--- a/dist/jsx-runtime.d.ts
++++ b/dist/jsx-runtime.d.ts
+@@ -1,3 +1,3 @@
+ // re-export to make TS happy when not using nodenext import resolution
+-export { jsx, jsxs, jsxDEV, Fragment } from './core';
+-export type { JSX, JSXNode, FunctionComponent } from './core';
++export { jsx, jsxs, jsxDEV, Fragment } from './core.js';
++export type { JSX, JSXNode, FunctionComponent } from './core.js';

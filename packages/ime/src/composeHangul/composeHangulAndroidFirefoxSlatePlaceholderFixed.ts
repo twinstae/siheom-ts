@@ -1,6 +1,6 @@
-import type { ComposedEventRecord } from "../_internal";
-import { replayGoldenEvents } from "../replayGoldenEvents";
-import { isEditable } from "../withPresentElement";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { replayGoldenEvents } from "../replayGoldenEvents/index.js";
+import { isEditable } from "../withPresentElement/index.js";
 import fixedGolden from "../../fixtures/android-firefox-slate-placeholder-fixed/continuous-hangul-가나다.json";
 
 const CAPTURED_TEXT = "가나다";

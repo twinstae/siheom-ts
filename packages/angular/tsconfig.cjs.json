@@ -1,0 +1,7 @@
+{
+  "extends": "tsconfig-custom/tsconfig.lib.cjs.json",
+  "compilerOptions": {
+    "experimentalDecorators": true
+  },
+  "exclude": ["**/*.test.ts", "**/*.spec.ts", "src/testSetup.ts", "vitest.config.ts", "html-raw.d.ts"]
+}

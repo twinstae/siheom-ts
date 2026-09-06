@@ -1,9 +1,9 @@
 import { userEvent, type UserEvent } from "@testing-library/user-event";
 import { type ActionStepDefinitionDict, type Locator } from "@siheom/core";
 
-import { resolveProfile, type ImeProfile } from "../profiles";
-import { withPresentElement } from "../withPresentElement";
-import { typeHanja } from "./typeHanja";
+import { resolveProfile, type ImeProfile } from "../profiles/index.js";
+import { withPresentElement } from "../withPresentElement/index.js";
+import { typeHanja } from "./typeHanja.js";
 
 export type CreateHanjaActionsOptions = {
   user?: UserEvent;

@@ -1,2 +1,2 @@
-export { planTypeImeSteps } from "./planTypeImeSteps";
-export type { TypeImeStep } from "./planTypeImeSteps";
+export { planTypeImeSteps } from "./planTypeImeSteps.js";
+export type { TypeImeStep } from "./planTypeImeSteps.js";

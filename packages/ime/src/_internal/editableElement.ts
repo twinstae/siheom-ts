@@ -1,4 +1,4 @@
-import { isEditable } from "../withPresentElement";
+import { isEditable } from "../withPresentElement/index.js";
 
 /** Targets that can receive contenteditable-specific composition emulation. */
 export function isContentEditableComposeTarget(

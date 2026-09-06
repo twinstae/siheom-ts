@@ -1,1 +1,1 @@
-export { composeEnter } from "./composeEnter";
+export { composeEnter } from "./composeEnter.js";

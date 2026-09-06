@@ -1,2 +1,2 @@
-export { createCdpImeActions } from "./createCdpImeActions.ts";
-export type { CreateCdpImeActionsOptions, CdpImeActions } from "./createCdpImeActions.ts";
+export { createCdpImeActions } from "./createCdpImeActions.js";
+export type { CreateCdpImeActionsOptions, CdpImeActions } from "./createCdpImeActions.js";

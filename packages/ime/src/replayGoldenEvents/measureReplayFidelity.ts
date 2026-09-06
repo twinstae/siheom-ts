@@ -1,11 +1,11 @@
-import type { ComposedEventRecord } from "../_internal/types";
-import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace";
-import { setInputValue } from "../_internal/events";
-import { ImeTrace } from "../_internal/imeTrace";
-import { isEditable } from "../withPresentElement";
-import { settleAfterPreedit } from "../composeHangul/settle";
-import { applyGoldenDomWriteback, stripGoldenText } from "./goldenDomWriteback";
-import { playGoldenEvent, type ReplayGoldenEventsOptions } from "./replayGoldenEvents";
+import type { ComposedEventRecord } from "../_internal/types.js";
+import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace.js";
+import { setInputValue } from "../_internal/events.js";
+import { ImeTrace } from "../_internal/imeTrace.js";
+import { isEditable } from "../withPresentElement/index.js";
+import { settleAfterPreedit } from "../composeHangul/settle.js";
+import { applyGoldenDomWriteback, stripGoldenText } from "./goldenDomWriteback.js";
+import { playGoldenEvent, type ReplayGoldenEventsOptions } from "./replayGoldenEvents.js";
 
 export type MeasureReplayFidelityOptions = ReplayGoldenEventsOptions;
 

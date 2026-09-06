@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "outDir": "${configDir}/dist/esm",
+    "tsBuildInfoFile": "${configDir}/.cache/typescript-esm-buildinfo"
+  }
+}

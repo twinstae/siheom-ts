@@ -1,17 +1,17 @@
 import { createRunSiheom } from "@siheom/core/siheom";
 import { effect } from "@siheom/core/effect";
 import { withFakeTimers } from "@siheom/core/with-fake-timers";
-import { cleanupReactRoots, defaultGivens, given } from "./given.ts";
-import { reactNativeEffects } from "./effects.ts";
-import { reactNativeFakeTimerScope } from "./fakeTimerScope.ts";
-import { getFailureSnapshot } from "./getA11ySnapshot.ts";
-import { query } from "./queryBuilders.ts";
+import { cleanupReactRoots, defaultGivens, given } from "./given.js";
+import { reactNativeEffects } from "./effects.js";
+import { reactNativeFakeTimerScope } from "./fakeTimerScope.js";
+import { getFailureSnapshot } from "./getA11ySnapshot.js";
+import { query } from "./queryBuilders.js";
 import {
   createReactNativeFakeTimerScopedRegistries,
   reactNativeActions,
   reactNativeAssertions,
-} from "./reactRegistries.ts";
-import { actions, assertions } from "./stepBuilders.ts";
+} from "./reactRegistries.js";
+import { actions, assertions } from "./stepBuilders.js";
 
 export const runSiheom = createRunSiheom({
   actions: reactNativeActions,

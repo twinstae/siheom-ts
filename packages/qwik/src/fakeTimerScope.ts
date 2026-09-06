@@ -1,5 +1,4 @@
-import { waitFor } from "@noma.to/qwik-testing-library";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import { FAKE_TIMER_USER_DELAY_MS } from "@siheom/core";
 import { vi } from "vitest";
 
@@ -13,7 +12,7 @@ export const qwikFakeTimerScope = {
   },
   createUser: () => userEvent.setup(),
   afterAction: async () => {
+    await vi.dynamicImportSettled();
     await vi.advanceTimersByTimeAsync(FAKE_TIMER_USER_DELAY_MS);
-    await waitFor(() => undefined);
   },
 };

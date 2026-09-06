@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "importHelpers": false,
+    "module": "CommonJS",
+    "moduleResolution": "Node10",
+    "outDir": "${configDir}/dist/cjs",
+    "tsBuildInfoFile": "${configDir}/.cache/typescript-cjs-buildinfo",
+    "noEmit": true,
+    "emitDeclarationOnly": false
+  }
+}

@@ -1,9 +1,9 @@
-import { createScreenReaderGivens, type ScreenReaderGivens } from "./screenReaderGivens.ts";
-import { createScreenReaderEffects, type ScreenReaderEffects } from "./screenReaderEffects.ts";
+import { createScreenReaderGivens, type ScreenReaderGivens } from "./screenReaderGivens.js";
+import { createScreenReaderEffects, type ScreenReaderEffects } from "./screenReaderEffects.js";
 import {
   createScreenReaderAssertions,
   type ScreenReaderAssertions,
-} from "./screenReaderAssertions.ts";
+} from "./screenReaderAssertions.js";
 
 export type VirtualScreenReaderExtension = {
   givens: ScreenReaderGivens;

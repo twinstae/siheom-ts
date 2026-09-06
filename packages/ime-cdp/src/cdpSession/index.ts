@@ -1,2 +1,2 @@
-export type { CdpSend, CdpSessionLike } from "./cdpSession.ts";
-export { getVitestCdpSession } from "./cdpSession.ts";
+export type { CdpSend, CdpSessionLike } from "./cdpSession.js";
+export { getVitestCdpSession } from "./cdpSession.js";

@@ -1,5 +1,5 @@
-import type { ComposedEventRecord } from "../_internal";
-import { replayGoldenEvents } from "../replayGoldenEvents";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { replayGoldenEvents } from "../replayGoldenEvents/index.js";
 import plainGolden from "../../fixtures/android-chrome-slate-plain-control/first-hangul-가.json";
 
 const CAPTURED_TEXT = "가";

@@ -1,13 +1,13 @@
 import { vi } from "vitest";
 import { userEvent, type UserEvent } from "@testing-library/user-event";
-import { createDefaultActions } from "./action.ts";
-import type { MessageMap } from "./messages.ts";
+import { createDefaultActions } from "./action.js";
+import type { MessageMap } from "./messages.js";
 import type {
   ActionStepDefinitionDict,
   AssertionStepDefinitionDict,
   EffectStepDefinitionDict,
   GivenStepDefinitionDict,
-} from "./types.ts";
+} from "./types.js";
 
 /** Simulated pause after a user action inside `withFakeTimers`. */
 export const FAKE_TIMER_USER_DELAY_MS = 50;

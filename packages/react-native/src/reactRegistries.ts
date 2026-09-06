@@ -4,12 +4,12 @@ import type {
   EffectStepDefinitionDict,
   GivenStepDefinitionDict,
 } from "@siheom/core";
-import { createDefaultActions } from "./action.ts";
-import { createDefaultAssertions } from "./assert.ts";
+import { createDefaultActions } from "./action.js";
+import { createDefaultAssertions } from "./assert.js";
 import {
   createFakeTimerScopedRegistries,
   type SiheomRegistryBundle,
-} from "./fakeTimerRegistries.ts";
+} from "./fakeTimerRegistries.js";
 
 export const reactNativeActions = createDefaultActions() as ActionStepDefinitionDict;
 export const reactNativeAssertions = createDefaultAssertions() as AssertionStepDefinitionDict;

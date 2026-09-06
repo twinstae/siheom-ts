@@ -8,7 +8,7 @@ import {
   type GivenStepDefinitionDict,
   type SiheomRegistryBundle,
 } from "@siheom/core";
-import { actAsync } from "./actAsync.ts";
+import { actAsync } from "./actAsync.js";
 
 function wrapInActAsync<T extends Record<string, (...args: never[]) => Promise<void>>>(
   implementations: T,

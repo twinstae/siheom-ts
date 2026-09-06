@@ -1,7 +1,7 @@
 import { cleanup, render } from "@testing-library/react-native";
 import type { GivenStep } from "@siheom/core";
 import type { ReactElement } from "react";
-import { setLastRender } from "./query.ts";
+import { setLastRender } from "./query.js";
 
 export async function cleanupReactRoots(): Promise<void> {
   await cleanup();

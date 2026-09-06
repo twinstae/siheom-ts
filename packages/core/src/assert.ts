@@ -1,10 +1,10 @@
 import { waitFor } from "@testing-library/dom";
-import type { AssertionStepDefinitionDict, Locator } from "./types";
-import type { A11ySnapshotOptions } from "./getA11ySnapshot.ts";
-import { getElement, getElements, locatorLog } from "./query";
+import type { AssertionStepDefinitionDict, Locator } from "./types.js";
+import { getElement, getElements, locatorLog } from "./query.js";
+import type { A11ySnapshotOptions } from "./getA11ySnapshot.js";
 import { expect } from "vitest";
-import { getA11ySnapshot } from "./getA11ySnapshot";
-import { tableToMarkdown } from "./tableToMarkdown";
+import { getA11ySnapshot } from "./getA11ySnapshot.js";
+import { tableToMarkdown } from "./tableToMarkdown.js";
 
 type ResolveElementMode = "sync" | "waitFor";
 

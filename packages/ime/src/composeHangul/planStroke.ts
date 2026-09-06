@@ -1,15 +1,15 @@
-import type { HangulKeyStroke } from "../planHangulKeystrokes";
-import type { ImeProfile } from "../profiles";
-import type { EventPlanStep } from "../_internal/eventPlan";
-import { hangulKeydownFields, hangulKeyupFields } from "../_internal/hangulKeyEvent";
-import { keyForJamo } from "../_internal/jamoKeyMap";
-import { planPostCompositionEndInput, planPreedit } from "../_internal/planPreedit";
+import type { HangulKeyStroke } from "../planHangulKeystrokes/index.js";
+import type { ImeProfile } from "../profiles/index.js";
+import type { EventPlanStep } from "../_internal/eventPlan.js";
+import { hangulKeydownFields, hangulKeyupFields } from "../_internal/hangulKeyEvent.js";
+import { keyForJamo } from "../_internal/jamoKeyMap.js";
+import { planPostCompositionEndInput, planPreedit } from "../_internal/planPreedit.js";
 import {
   planChromeCompositionOverflow,
   planSafariCompositionOverflow,
   planSafariReplacementOverflow,
-} from "../_internal/planMaxLength";
-import { planSafariSyllableCommitCore } from "../_internal/planSafari";
+} from "../_internal/planMaxLength.js";
+import { planSafariSyllableCommitCore } from "../_internal/planSafari.js";
 
 export type StrokeStepOutcome = "ok" | "aborted-blur" | "aborted-deferred";
 

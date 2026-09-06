@@ -1,4 +1,4 @@
-import { segmentTypeText } from "../segmentTypeText";
+import { segmentTypeText } from "../segmentTypeText/index.js";
 
 export type TypeImeStep =
   | { kind: "hangul"; text: string; commitFinal: boolean }

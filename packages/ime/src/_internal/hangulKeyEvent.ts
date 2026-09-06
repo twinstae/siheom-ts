@@ -1,5 +1,5 @@
-import type { ImeProfile } from "../profiles";
-import { keyForJamo } from "./jamoKeyMap";
+import type { ImeProfile } from "../profiles/index.js";
+import { keyForJamo } from "./jamoKeyMap.js";
 
 const UNIDENTIFIED_KEY = { key: "Unidentified", code: "", keyCode: 229 } as const;
 

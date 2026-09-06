@@ -5,7 +5,7 @@ import type {
   FakeTimersScopeStep,
   GivenStepDefinitionDict,
   Step,
-} from "./types.ts";
+} from "./types.js";
 
 export function withFakeTimers<
   TActions extends ActionStepDefinitionDict,

@@ -1,0 +1,14 @@
+{
+  "extends": "tsconfig-custom/tsconfig.app.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": ".cache/typescript-app-buildinfo",
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": ["./test/*"],
+      "@siheom/react-native": ["../../packages/react-native/src/index.ts"]
+    }
+  },
+  "include": ["test"],
+  "exclude": ["test/**/*.test.ts", "test/**/*.test.tsx", "test/**/*.spec.ts", "test/**/*.spec.tsx", "test/**/*.stories.ts", "test/**/*.stories.tsx", "test/setupTests.ts", "test/matchMedia.polyfill.ts"],
+  "references": [{ "path": "../../packages/react-native/tsconfig.esm.json" }]
+}

@@ -5,26 +5,34 @@
   "type": "module",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "!src/**/*.test.ts",
+    "!src/**/*.test.tsx",
+    "!src/**/*.spec.ts",
+    "!src/**/*.spec.tsx",
+    "!src/**/__snapshots__/**",
+    "!src/**/*.d.ts"
   ],
-  "main": "./dist/index.mjs",
+  "main": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.mjs"
       },
       "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
       }
     }
   },
   "scripts": {
-    "build": "tsdown",
+    "build": "tsdown && yarn node ../../scripts/validate-typescript-artifacts.mjs .",
     "check-exports": "bash ../../scripts/check-exports.sh .",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck": "tsc --build",
     "test": "vitest run"
   },
   "dependencies": {
@@ -39,10 +47,12 @@
   "devDependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
+    "@types/node": "^24.13.3",
     "@vitest/browser": "^4.1.10",
     "@vitest/browser-playwright": "^4.1.10",
     "@vitest/coverage-v8": "4.1.10",
     "playwright": "^1.61.1",
+    "tsconfig-custom": "workspace:*",
     "tsdown": "^0.22.8",
     "typescript": "^5.9.3",
     "vitest": "^4.1.10"

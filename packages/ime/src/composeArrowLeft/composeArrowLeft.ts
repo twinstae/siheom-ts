@@ -1,7 +1,7 @@
-import type { ComposedEventRecord } from "../_internal";
-import { getImeSession, ImeTrace, playEventPlan, readMaxLength } from "../_internal";
-import { resolveProfile, type ImeProfile } from "../profiles";
-import { planArrowLeft } from "./planArrowLeft";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { getImeSession, ImeTrace, playEventPlan, readMaxLength } from "../_internal/index.js";
+import { resolveProfile, type ImeProfile } from "../profiles/index.js";
+import { planArrowLeft } from "./planArrowLeft.js";
 
 /**
  * ArrowLeft: if composing, confirm+end composition first (ibus-hangul style), then move caret.

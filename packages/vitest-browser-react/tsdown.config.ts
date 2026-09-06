@@ -1,9 +1,8 @@
 import { defineConfig } from "tsdown";
+import { createTsdownBuildOptions } from "../../scripts/create-tsdown-build-options.mjs";
 
-export default defineConfig({
-  entry: ["src/index.ts"],
-  format: ["cjs", "esm"],
-  dts: true,
-  outDir: "dist",
-  clean: true,
+const options = createTsdownBuildOptions({
+  entries: ["src/index.ts"],
 });
+
+export default defineConfig(options);

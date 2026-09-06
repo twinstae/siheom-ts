@@ -2,7 +2,7 @@ import { screen, within as rntlWithin, type RenderResult } from "@testing-librar
 import type { TestInstance } from "test-renderer";
 import type { Locator } from "@siheom/core";
 
-export { query, locatorLog } from "./queryBuilders.ts";
+export { query, locatorLog } from "./queryBuilders.js";
 
 type Queries = Pick<
   typeof screen,

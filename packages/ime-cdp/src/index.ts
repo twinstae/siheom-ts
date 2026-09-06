@@ -1,13 +1,13 @@
-export { composeHangulCdp } from "./composeHangulCdp";
-export type { ComposeHangulCdpOptions } from "./composeHangulCdp";
-export { createCdpImeActions } from "./createCdpImeActions";
-export type { CreateCdpImeActionsOptions, CdpImeActions } from "./createCdpImeActions";
-export { getVitestCdpSession } from "./cdpSession";
-export type { CdpSend, CdpSessionLike } from "./cdpSession";
-export { buildChromiumCdpTrace, diffCriticalTraces } from "./atdd";
+export { composeHangulCdp } from "./composeHangulCdp/index.js";
+export type { ComposeHangulCdpOptions } from "./composeHangulCdp/index.js";
+export { createCdpImeActions } from "./createCdpImeActions/index.js";
+export type { CreateCdpImeActionsOptions, CdpImeActions } from "./createCdpImeActions/index.js";
+export { getVitestCdpSession } from "./cdpSession/index.js";
+export type { CdpSend, CdpSessionLike } from "./cdpSession/index.js";
+export { buildChromiumCdpTrace, diffCriticalTraces } from "./atdd/index.js";
 export type {
   ChromiumCdpTrace,
   ChromiumCdpTraceSource,
   CriticalEvent,
   CriticalTraceDiff,
-} from "./atdd";
+} from "./atdd/index.js";

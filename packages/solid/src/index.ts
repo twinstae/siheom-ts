@@ -8,9 +8,9 @@ import {
   query,
   withFakeTimers,
 } from "@siheom/core";
-import { defaultGivens, given } from "./given.ts";
-import { solidEffects } from "./effects.ts";
-import { solidFakeTimerScope } from "./fakeTimerScope.ts";
+import { defaultGivens, given } from "./given.js";
+import { solidEffects } from "./effects.js";
+import { solidFakeTimerScope } from "./fakeTimerScope.js";
 
 export const runSiheom = createRunSiheom({
   actions: defaultActions,

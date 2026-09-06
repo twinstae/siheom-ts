@@ -1,4 +1,4 @@
-import { FAKE_TIMER_USER_DELAY_MS } from "./fakeTimerRegistries.ts";
+import { FAKE_TIMER_USER_DELAY_MS } from "./fakeTimerRegistries.js";
 import { vi } from "vitest";
 
 export { FAKE_TIMER_USER_DELAY_MS };

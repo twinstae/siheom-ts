@@ -1,20 +1,47 @@
 {
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "es2022",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "allowImportingTsExtensions": true,
-    "module": "Preserve",
-    "noEmit": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"]
-  },
-  "include": ["scripts"]
+  "files": [],
+  "references": [
+    {
+      "path": "packages/angular"
+    },
+    {
+      "path": "packages/core"
+    },
+    {
+      "path": "packages/ime"
+    },
+    {
+      "path": "packages/ime-cdp"
+    },
+    {
+      "path": "packages/qwik"
+    },
+    {
+      "path": "packages/react"
+    },
+    {
+      "path": "packages/react-native"
+    },
+    {
+      "path": "packages/solid"
+    },
+    {
+      "path": "packages/svelte"
+    },
+    {
+      "path": "packages/virtual-screen-reader"
+    },
+    {
+      "path": "packages/vitest-browser-react"
+    },
+    {
+      "path": "packages/vue"
+    },
+    {
+      "path": "apps/react-example"
+    },
+    {
+      "path": "apps/react-native-examples"
+    }
+  ]
 }

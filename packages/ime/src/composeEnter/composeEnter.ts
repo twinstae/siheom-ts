@@ -1,7 +1,7 @@
-import type { ComposedEventRecord } from "../_internal";
-import { getImeSession, ImeTrace, playEventPlan, readMaxLength } from "../_internal";
-import type { ImeProfile } from "../profiles";
-import { planEnter } from "./planEnter";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { getImeSession, ImeTrace, playEventPlan, readMaxLength } from "../_internal/index.js";
+import type { ImeProfile } from "../profiles/index.js";
+import { planEnter } from "./planEnter.js";
 
 /** Android virtual keyboard: empty key `code`, compositionend without confirm pulse. */
 function enterPresentation(profile: ImeProfile): {

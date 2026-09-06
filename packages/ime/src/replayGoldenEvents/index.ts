@@ -1,2 +1,2 @@
-export { replayGoldenEvents } from "./replayGoldenEvents";
-export type { ReplayGoldenEventsOptions } from "./replayGoldenEvents";
+export { replayGoldenEvents } from "./replayGoldenEvents.js";
+export type { ReplayGoldenEventsOptions } from "./replayGoldenEvents.js";

@@ -1,9 +1,8 @@
 import { page, userEvent, type Locator as BrowserLocator } from "vitest/browser";
-import { dispatchDragAndDrop } from "@siheom/core";
+import { dispatchDragAndDrop, locatorLog } from "@siheom/core";
 import type { ActionStepDefinitionDict, Locator } from "@siheom/core";
-import { locatorLog } from "../../core/src/query.ts";
 import { expect } from "vitest";
-import { getElementFromLocator, toBrowserLocator } from "./browserLocator.ts";
+import { getElementFromLocator, toBrowserLocator } from "./browserLocator.js";
 
 type BrowserActionsOptions = {
   resolveElement?: "sync" | "waitFor";

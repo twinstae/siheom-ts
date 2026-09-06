@@ -1,8 +1,13 @@
-import type { KeyEventFields } from "./events";
-import { setInputValue } from "./events";
-import type { InputEventFields, ImeTraceEmitter } from "./imeTrace";
-import { ImeTrace } from "./imeTrace";
-import { clearImeSession, getImeSession, setImeSession, type ImeComposeSession } from "./session";
+import type { KeyEventFields } from "./events.js";
+import { setInputValue } from "./events.js";
+import type { InputEventFields, ImeTraceEmitter } from "./imeTrace.js";
+import { ImeTrace } from "./imeTrace.js";
+import {
+  clearImeSession,
+  getImeSession,
+  setImeSession,
+  type ImeComposeSession,
+} from "./session.js";
 
 export type EventPlanStep =
   | { kind: "keydown"; fields: KeyEventFields }

@@ -1,5 +1,5 @@
-import type { ComposedEventRecord } from "./types";
-import { dispatch, snapshot, type KeyEventFields } from "./events";
+import type { ComposedEventRecord } from "./types.js";
+import { dispatch, snapshot, type KeyEventFields } from "./events.js";
 
 export type InputEventFields = {
   inputType: string;

@@ -5,8 +5,8 @@ import type {
   EffectStepDefinitionDict,
   GivenStepDefinitionDict,
 } from "@siheom/core";
-import { createDefaultActions } from "./action.ts";
-import { createDefaultAssertions } from "./assert.ts";
+import { createDefaultActions } from "./action.js";
+import { createDefaultAssertions } from "./assert.js";
 
 /** Keep in sync with @siheom/core fakeTimerScope. */
 export const FAKE_TIMER_USER_DELAY_MS = 50;

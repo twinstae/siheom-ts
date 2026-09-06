@@ -1,5 +1,5 @@
-import type { EventPlanStep } from "./eventPlan";
-import type { ReplacementInputType } from "./replacementInputType";
+import type { EventPlanStep } from "./eventPlan.js";
+import type { ReplacementInputType } from "./replacementInputType.js";
 
 function clampValue(value: string, limit: number): string {
   return value.slice(0, limit);

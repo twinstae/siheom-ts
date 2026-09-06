@@ -1,8 +1,8 @@
-import type { ComposedEventRecord } from "../_internal";
-import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace";
-import { readEditableText } from "../_internal/editableElement";
-import { planHangulKeystrokes } from "../planHangulKeystrokes";
-import { settleAfterPreedit } from "./settle";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace.js";
+import { readEditableText } from "../_internal/editableElement.js";
+import { planHangulKeystrokes } from "../planHangulKeystrokes/index.js";
+import { settleAfterPreedit } from "./settle.js";
 
 /**
  * Closed-loop Android-Firefox Hangul emulator for contenteditable editors.

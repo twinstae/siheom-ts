@@ -1,15 +1,14 @@
 import { defineConfig } from "tsdown";
+import { createTsdownBuildOptions } from "../../scripts/create-tsdown-build-options.mjs";
 
-export default defineConfig({
-  entry: [
+const options = createTsdownBuildOptions({
+  entries: [
     "src/index.ts",
     "src/siheom.ts",
     "src/effect.ts",
     "src/withFakeTimers.ts",
     "src/a11y/ariaRoles.ts",
   ],
-  format: ["cjs", "esm"],
-  dts: true,
-  outDir: "dist",
-  clean: true,
 });
+
+export default defineConfig(options);

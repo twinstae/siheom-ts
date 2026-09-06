@@ -1,5 +1,5 @@
-import { setInputValue } from "../_internal/events";
-import { isEditable } from "../withPresentElement";
+import { setInputValue } from "../_internal/events.js";
+import { isEditable } from "../withPresentElement/index.js";
 
 export type GoldenWritebackMode = "none" | "golden";
 

@@ -1,5 +1,5 @@
 import { FAKE_TIMER_USER_DELAY_MS } from "@siheom/core";
-import { actAsync } from "./actAsync.ts";
+import { actAsync } from "./actAsync.js";
 import { vi } from "vitest";
 
 /**

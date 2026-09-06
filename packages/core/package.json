@@ -5,82 +5,90 @@
   "type": "module",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "!src/**/*.test.ts",
+    "!src/**/*.test.tsx",
+    "!src/**/*.spec.ts",
+    "!src/**/*.spec.tsx",
+    "!src/**/__snapshots__/**",
+    "!src/**/*.d.ts"
   ],
-  "main": "./dist/index.mjs",
+  "main": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.mjs"
       },
       "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
       }
     },
     "./siheom": {
       "import": {
-        "types": "./dist/siheom.d.mts",
-        "default": "./dist/siheom.mjs"
+        "types": "./dist/esm/siheom.d.ts",
+        "default": "./dist/esm/siheom.mjs"
       },
       "require": {
-        "types": "./dist/siheom.d.cts",
-        "default": "./dist/siheom.cjs"
+        "types": "./dist/cjs/siheom.d.cts",
+        "default": "./dist/cjs/siheom.cjs"
       }
     },
     "./effect": {
       "import": {
-        "types": "./dist/effect.d.mts",
-        "default": "./dist/effect.mjs"
+        "types": "./dist/esm/effect.d.ts",
+        "default": "./dist/esm/effect.mjs"
       },
       "require": {
-        "types": "./dist/effect.d.cts",
-        "default": "./dist/effect.cjs"
+        "types": "./dist/cjs/effect.d.cts",
+        "default": "./dist/cjs/effect.cjs"
       }
     },
     "./with-fake-timers": {
       "import": {
-        "types": "./dist/withFakeTimers.d.mts",
-        "default": "./dist/withFakeTimers.mjs"
+        "types": "./dist/esm/withFakeTimers.d.ts",
+        "default": "./dist/esm/withFakeTimers.mjs"
       },
       "require": {
-        "types": "./dist/withFakeTimers.d.cts",
-        "default": "./dist/withFakeTimers.cjs"
+        "types": "./dist/cjs/withFakeTimers.d.cts",
+        "default": "./dist/cjs/withFakeTimers.cjs"
       }
     },
     "./aria-roles": {
       "import": {
-        "types": "./dist/a11y/ariaRoles.d.mts",
-        "default": "./dist/a11y/ariaRoles.mjs"
+        "types": "./dist/esm/a11y/ariaRoles.d.ts",
+        "default": "./dist/esm/a11y/ariaRoles.mjs"
       },
       "require": {
-        "types": "./dist/a11y/ariaRoles.d.cts",
-        "default": "./dist/a11y/ariaRoles.cjs"
+        "types": "./dist/cjs/a11y/ariaRoles.d.cts",
+        "default": "./dist/cjs/a11y/ariaRoles.cjs"
       }
     }
   },
   "typesVersions": {
     "*": {
       "siheom": [
-        "./dist/siheom.d.mts"
+        "./dist/esm/siheom.d.ts"
       ],
       "effect": [
-        "./dist/effect.d.mts"
+        "./dist/esm/effect.d.ts"
       ],
       "with-fake-timers": [
-        "./dist/withFakeTimers.d.mts"
+        "./dist/esm/withFakeTimers.d.ts"
       ],
       "aria-roles": [
-        "./dist/a11y/ariaRoles.d.mts"
+        "./dist/esm/a11y/ariaRoles.d.ts"
       ]
     }
   },
   "scripts": {
-    "build": "tsdown",
+    "build": "tsdown && yarn node ../../scripts/validate-typescript-artifacts.mjs .",
     "check-exports": "bash ../../scripts/check-exports.sh .",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck": "tsc --build",
     "test": "vitest run"
   },
   "dependencies": {
@@ -99,10 +107,12 @@
     "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/aria-query": "^5.0.4",
+    "@types/node": "^24.13.3",
     "@vitest/browser": "^4.1.10",
     "@vitest/browser-playwright": "^4.1.10",
     "@vitest/coverage-v8": "4.1.10",
     "playwright": "^1.62.1",
+    "tsconfig-custom": "workspace:*",
     "tsdown": "^0.22.14",
     "typescript": "^5.9.3",
     "vitest": "^4.1.10"

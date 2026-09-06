@@ -1,0 +1,18 @@
+{
+  "name": "tsconfig-custom",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "tsconfig.*.json"
+  ],
+  "exports": {
+    "./tsconfig.app.json": "./tsconfig.app.json",
+    "./tsconfig.lib.json": "./tsconfig.lib.json",
+    "./tsconfig.lib.cjs.json": "./tsconfig.lib.cjs.json",
+    "./tsconfig.lib.esm.json": "./tsconfig.lib.esm.json",
+    "./tsconfig.node.json": "./tsconfig.node.json",
+    "./tsconfig.test.json": "./tsconfig.test.json"
+  },
+  "tsconfig": "tsconfig.base.json"
+}

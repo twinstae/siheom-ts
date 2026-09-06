@@ -1,0 +1,9 @@
+{
+  "extends": "tsconfig-custom/tsconfig.test.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": ".cache/typescript-test-buildinfo",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@builder.io/qwik"
+  },
+  "exclude": []
+}

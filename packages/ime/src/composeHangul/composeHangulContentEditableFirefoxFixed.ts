@@ -1,10 +1,10 @@
-import { planHangulKeystrokes, type HangulKeyStroke } from "../planHangulKeystrokes";
-import type { ComposedEventRecord } from "../_internal";
-import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace";
-import { playEventPlan } from "../_internal/eventPlan";
-import { ImeTrace } from "../_internal/imeTrace";
-import { isEditable } from "../withPresentElement";
-import type { ImeProfile } from "../profiles";
+import { planHangulKeystrokes, type HangulKeyStroke } from "../planHangulKeystrokes/index.js";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace.js";
+import { playEventPlan } from "../_internal/eventPlan.js";
+import { ImeTrace } from "../_internal/imeTrace.js";
+import { isEditable } from "../withPresentElement/index.js";
+import type { ImeProfile } from "../profiles/index.js";
 import {
   contentEditableValueBefore,
   planContentEditableBoundaryCommit,
@@ -14,9 +14,9 @@ import {
   planFirefoxDeferredEnd,
   stripZwsp,
   withZwsp,
-} from "./contentEditableFirefoxShared";
-import { planChromeStrokeHead, planChromeStrokeKeyup } from "./planStroke";
-import { settleAfterPreedit } from "./settle";
+} from "./contentEditableFirefoxShared.js";
+import { planChromeStrokeHead, planChromeStrokeKeyup } from "./planStroke.js";
+import { settleAfterPreedit } from "./settle.js";
 
 type FixedPlayState = {
   sessionJustStarted: boolean;

@@ -1,0 +1,9 @@
+{
+  "extends": ["./tsconfig.app.json", "tsconfig-custom/tsconfig.test.json"],
+  "compilerOptions": {
+    "tsBuildInfoFile": ".cache/typescript-test-buildinfo"
+  },
+  "include": ["test", "test/**/*.json", ".storybook/preview.tsx"],
+  "exclude": [],
+  "references": [{ "path": "../../packages/react-native/tsconfig.esm.json" }]
+}

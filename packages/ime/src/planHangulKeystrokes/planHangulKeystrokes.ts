@@ -7,15 +7,15 @@ import {
   disassembleCompleteCharacter,
 } from "es-hangul";
 
-import { hangulJamos } from "../hangulJamos";
-import { keyForJamo } from "../_internal/jamoKeyMap";
+import { hangulJamos } from "../hangulJamos/index.js";
+import { keyForJamo } from "../_internal/jamoKeyMap.js";
 import {
   keyForSebeolJamo,
   SEBEOL_COMPOUND_JONGSEONG_SEQ,
   SEBEOL_COMPOUND_JUNGSEONG_SEQ,
-} from "../_internal/jamoKeyMapSebeol";
-import { normalizeJungseong } from "../_internal/normalizeJungseong";
-import type { HangulCompositionBoundary, HangulKeyboardLayout } from "../profiles";
+} from "../_internal/jamoKeyMapSebeol.js";
+import { normalizeJungseong } from "../_internal/normalizeJungseong.js";
+import type { HangulCompositionBoundary, HangulKeyboardLayout } from "../profiles/index.js";
 
 export type HangulKeyStroke = {
   jamo: string;

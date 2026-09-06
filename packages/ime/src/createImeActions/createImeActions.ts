@@ -1,24 +1,24 @@
 import { userEvent, type UserEvent } from "@testing-library/user-event";
 import { type ActionStepDefinitionDict, type Locator } from "@siheom/core";
 
-import { composeArrowLeft } from "../composeArrowLeft";
-import { composeBackspace } from "../composeBackspace";
-import { composeEnter } from "../composeEnter";
-import { composeHangul, type ComposeHangulOptions } from "../composeHangul";
-import { composeHangulContentEditableFirefoxBrokenOn } from "../composeHangul/composeHangulContentEditableFirefoxBroken";
-import { composeHangulContentEditableFirefoxFixedOn } from "../composeHangul/composeHangulContentEditableFirefoxFixed";
-import { composeHangulContentEditableAndroidFirefoxFixedOn } from "../composeHangul/composeHangulContentEditableAndroidFirefoxFixed";
-import { composeHangulAndroidChromeSlatePlaceholderBrokenOn } from "../composeHangul/composeHangulAndroidChromeSlatePlaceholderBroken";
-import { composeHangulAndroidFirefoxSlatePlaceholderBrokenOn } from "../composeHangul/composeHangulAndroidFirefoxSlatePlaceholderBroken";
-import { composeHangulAndroidFirefoxSlatePlaceholderFixedOn } from "../composeHangul/composeHangulAndroidFirefoxSlatePlaceholderFixed";
+import { composeArrowLeft } from "../composeArrowLeft/index.js";
+import { composeBackspace } from "../composeBackspace/index.js";
+import { composeEnter } from "../composeEnter/index.js";
+import { composeHangul, type ComposeHangulOptions } from "../composeHangul/index.js";
+import { composeHangulContentEditableFirefoxBrokenOn } from "../composeHangul/composeHangulContentEditableFirefoxBroken.js";
+import { composeHangulContentEditableFirefoxFixedOn } from "../composeHangul/composeHangulContentEditableFirefoxFixed.js";
+import { composeHangulContentEditableAndroidFirefoxFixedOn } from "../composeHangul/composeHangulContentEditableAndroidFirefoxFixed.js";
+import { composeHangulAndroidChromeSlatePlaceholderBrokenOn } from "../composeHangul/composeHangulAndroidChromeSlatePlaceholderBroken.js";
+import { composeHangulAndroidFirefoxSlatePlaceholderBrokenOn } from "../composeHangul/composeHangulAndroidFirefoxSlatePlaceholderBroken.js";
+import { composeHangulAndroidFirefoxSlatePlaceholderFixedOn } from "../composeHangul/composeHangulAndroidFirefoxSlatePlaceholderFixed.js";
 import {
   composeHangulLinuxChromeSlatePlaceholderFixedOn,
   composeHangulLinuxFirefoxSlatePlaceholderFixedOn,
-} from "../composeHangul/composeHangulLinuxSlateGolden";
-import { planTypeImeSteps, type TypeImeStep } from "../planTypeImeSteps";
-import { resolveProfile, type HangulComposeMode, type ImeProfile } from "../profiles";
-import { isContentEditableComposeTarget } from "../_internal/editableElement";
-import { isEditable, withPresentElement } from "../withPresentElement";
+} from "../composeHangul/composeHangulLinuxSlateGolden.js";
+import { planTypeImeSteps, type TypeImeStep } from "../planTypeImeSteps/index.js";
+import { resolveProfile, type HangulComposeMode, type ImeProfile } from "../profiles/index.js";
+import { isContentEditableComposeTarget } from "../_internal/editableElement.js";
+import { isEditable, withPresentElement } from "../withPresentElement/index.js";
 
 export type CreateImeActionsOptions = {
   user?: UserEvent;

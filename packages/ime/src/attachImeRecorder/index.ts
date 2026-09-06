@@ -1,1 +1,1 @@
-export { attachImeRecorder } from "./attachImeRecorder";
+export { attachImeRecorder } from "./attachImeRecorder.js";

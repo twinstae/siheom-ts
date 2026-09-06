@@ -5,26 +5,34 @@
   "type": "module",
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "!src/**/*.test.ts",
+    "!src/**/*.test.tsx",
+    "!src/**/*.spec.ts",
+    "!src/**/*.spec.tsx",
+    "!src/**/__snapshots__/**",
+    "!src/**/*.d.ts"
   ],
-  "main": "./dist/index.mjs",
+  "main": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.mjs"
       },
       "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
       }
     }
   },
   "scripts": {
-    "build": "tsdown",
+    "build": "tsdown && yarn node ../../scripts/validate-typescript-artifacts.mjs .",
     "check-exports": "bash ../../scripts/check-exports.sh .",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck": "tsc --build",
     "test": "vitest run"
   },
   "dependencies": {
@@ -40,15 +48,16 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.5",
-    "@builder.io/qwik": "^1.20.0",
-    "@noma.to/qwik-testing-library": "^1.6.0",
+    "@builder.io/qwik": "patch:@builder.io/qwik@npm%3A1.20.0#~/.yarn/patches/@builder.io-qwik-npm-1.20.0-adabc1588a.patch",
+    "@noma.to/qwik-testing-library": "patch:@noma.to/qwik-testing-library@npm%3A1.6.0#~/.yarn/patches/@noma.to-qwik-testing-library-npm-1.6.0-ec793de284.patch",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/user-event": "^14.6.1",
-    "@types/node": "^26.1.2",
+    "@types/node": "^24.13.3",
     "@vitest/browser": "^4.1.10",
     "@vitest/browser-playwright": "^4.1.10",
     "playwright": "^1.62.1",
+    "tsconfig-custom": "workspace:*",
     "tsdown": "^0.22.14",
     "typescript": "^5.9.3",
     "vite": "^8.2.0",

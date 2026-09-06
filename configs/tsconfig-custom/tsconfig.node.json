@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "incremental": true,
+    "composite": true,
+    "lib": ["ES2022"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "noEmit": true,
+    "rootDir": "${configDir}/../..",
+    "types": ["node"]
+  },
+  "files": [
+    "${configDir}/../../scripts/create-tsdown-build-options.mjs",
+    "${configDir}/../../scripts/vitest-browser.ts"
+  ]
+}

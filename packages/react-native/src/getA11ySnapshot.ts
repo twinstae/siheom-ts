@@ -1,4 +1,4 @@
-import { getFailureSnapshotRoot } from "./query.ts";
+import { getFailureSnapshotRoot } from "./query.js";
 
 type A11yNode = {
   role?: string;

@@ -1,8 +1,8 @@
 import { waitFor } from "@testing-library/react-native";
 import type { AssertionStepDefinitionDict, Locator } from "@siheom/core";
 import { expect } from "vitest";
-import { getA11ySnapshot } from "./getA11ySnapshot.ts";
-import { getElement, getElements } from "./query.ts";
+import { getA11ySnapshot } from "./getA11ySnapshot.js";
+import { getElement, getElements } from "./query.js";
 
 type DefaultAssertionsOptions = {
   resolveElement?: "sync" | "waitFor";

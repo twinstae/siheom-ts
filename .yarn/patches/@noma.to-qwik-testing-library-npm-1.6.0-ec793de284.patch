@@ -1,0 +1,18 @@
+diff --git a/lib-types/index.d.ts b/lib-types/index.d.ts
+index 9d1dd9b6abc0a6aa80470449cc8a496f09881899..506e08d07dd54b1ba58012dd12c2a4cf7929dbc9 100644
+--- a/lib-types/index.d.ts
++++ b/lib-types/index.d.ts
+@@ -1 +1 @@
+-export * from "./lib/qwik-testing-library";
++export * from "./lib/qwik-testing-library.js";
+diff --git a/lib-types/lib/qwik-testing-library.d.ts b/lib-types/lib/qwik-testing-library.d.ts
+index 9eec1fe0d67f8f84f620756255f82c43f0734e88..4c5baa12e7e9471dc0db1522dc009cf7c8d67b39 100644
+--- a/lib-types/lib/qwik-testing-library.d.ts
++++ b/lib-types/lib/qwik-testing-library.d.ts
+@@ -1,5 +1,5 @@
+ import type { JSXOutput } from "@builder.io/qwik";
+-import type { RenderOptions, RenderHookOptions, RenderHookResult, Result } from "./types";
++import type { RenderOptions, RenderHookOptions, RenderHookResult, Result } from "./types.js";
+ declare function render(ui: JSXOutput, options?: RenderOptions): Promise<Result>;
+ declare function cleanup(): void;
+ declare function renderHook<Result>(callback: () => Result, options?: RenderHookOptions): Promise<RenderHookResult<Result>>;

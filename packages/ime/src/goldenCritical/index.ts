@@ -1,2 +1,2 @@
-export { goldenCritical, fromFirstCompositionStart, goldenToRecords } from "./goldenCritical";
-export type { GoldenEventRecord } from "./goldenCritical";
+export { goldenCritical, fromFirstCompositionStart, goldenToRecords } from "./goldenCritical.js";
+export type { GoldenEventRecord } from "./goldenCritical.js";

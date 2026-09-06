@@ -1,8 +1,8 @@
 import { waitFor } from "@testing-library/dom";
 import { userEvent, type UserEvent } from "@testing-library/user-event";
-import type { ActionStepDefinitionDict, Locator } from "./types";
-import { dispatchDragAndDrop } from "./dispatchDragAndDrop.ts";
-import { getElement, locatorLog } from "./query";
+import type { ActionStepDefinitionDict, Locator } from "./types.js";
+import { dispatchDragAndDrop } from "./dispatchDragAndDrop.js";
+import { getElement, locatorLog } from "./query.js";
 import { expect } from "vitest";
 
 type DefaultActionsOptions = {

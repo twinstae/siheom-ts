@@ -1,0 +1,15 @@
+{
+  "extends": ["./tsconfig.app.json", "tsconfig-custom/tsconfig.test.json"],
+  "compilerOptions": {
+    "tsBuildInfoFile": ".cache/typescript-test-buildinfo"
+  },
+  "include": ["test", "test/**/*.json", ".storybook/preview.ts"],
+  "exclude": [],
+  "references": [
+    { "path": "../../packages/core/tsconfig.esm.json" },
+    { "path": "../../packages/ime/tsconfig.esm.json" },
+    { "path": "../../packages/ime-cdp/tsconfig.esm.json" },
+    { "path": "../../packages/react/tsconfig.esm.json" },
+    { "path": "../../packages/vitest-browser-react/tsconfig.esm.json" }
+  ]
+}

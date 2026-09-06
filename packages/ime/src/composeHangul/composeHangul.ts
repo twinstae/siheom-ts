@@ -1,4 +1,8 @@
-import { planHangulKeystrokes, withSuffix, type HangulKeyStroke } from "../planHangulKeystrokes";
+import {
+  planHangulKeystrokes,
+  withSuffix,
+  type HangulKeyStroke,
+} from "../planHangulKeystrokes/index.js";
 import {
   ImeTrace,
   playEventPlan,
@@ -6,27 +10,27 @@ import {
   setImeSession,
   takePendingMaxLengthReject,
   type ComposedEventRecord,
-} from "../_internal";
-import { consumeImeControlledWriteback } from "../markImeControlledWriteback";
-import { resolveProfile, type HangulComposeMode, type ImeProfile } from "../profiles";
+} from "../_internal/index.js";
+import { consumeImeControlledWriteback } from "../markImeControlledWriteback/index.js";
+import { resolveProfile, type HangulComposeMode, type ImeProfile } from "../profiles/index.js";
 import {
   composeHangulSafariComposition,
   composeHangulSafariReplacement,
-} from "./composeHangulSafari";
-import { composeHangulContentEditableFirefoxBroken } from "./composeHangulContentEditableFirefoxBroken";
-import { composeHangulContentEditableFirefoxFixed } from "./composeHangulContentEditableFirefoxFixed";
-import { composeHangulContentEditableAndroidFirefoxFixed } from "./composeHangulContentEditableAndroidFirefoxFixed";
-import { composeHangulAndroidChromeSlatePlaceholderBroken } from "./composeHangulAndroidChromeSlatePlaceholderBroken";
-import { composeHangulAndroidChromeSlatePlainControl } from "./composeHangulAndroidChromeSlatePlainControl";
-import { composeHangulAndroidFirefoxSlatePlaceholderBroken } from "./composeHangulAndroidFirefoxSlatePlaceholderBroken";
-import { composeHangulAndroidFirefoxSlatePlaceholderFixed } from "./composeHangulAndroidFirefoxSlatePlaceholderFixed";
-import { composeHangulAndroidFirefoxSlatePlainControl } from "./composeHangulAndroidFirefoxSlatePlainControl";
+} from "./composeHangulSafari.js";
+import { composeHangulContentEditableFirefoxBroken } from "./composeHangulContentEditableFirefoxBroken.js";
+import { composeHangulContentEditableFirefoxFixed } from "./composeHangulContentEditableFirefoxFixed.js";
+import { composeHangulContentEditableAndroidFirefoxFixed } from "./composeHangulContentEditableAndroidFirefoxFixed.js";
+import { composeHangulAndroidChromeSlatePlaceholderBroken } from "./composeHangulAndroidChromeSlatePlaceholderBroken.js";
+import { composeHangulAndroidChromeSlatePlainControl } from "./composeHangulAndroidChromeSlatePlainControl.js";
+import { composeHangulAndroidFirefoxSlatePlaceholderBroken } from "./composeHangulAndroidFirefoxSlatePlaceholderBroken.js";
+import { composeHangulAndroidFirefoxSlatePlaceholderFixed } from "./composeHangulAndroidFirefoxSlatePlaceholderFixed.js";
+import { composeHangulAndroidFirefoxSlatePlainControl } from "./composeHangulAndroidFirefoxSlatePlainControl.js";
 import {
   composeHangulLinuxChromeSlatePlaceholderFixed,
   composeHangulLinuxChromeSlatePlainControl,
   composeHangulLinuxFirefoxSlatePlaceholderFixed,
   composeHangulLinuxFirefoxSlatePlainControl,
-} from "./composeHangulLinuxSlateGolden";
+} from "./composeHangulLinuxSlateGolden.js";
 import {
   decideStrokeStepOutcome,
   planBoundaryCommitAfterStep,
@@ -37,11 +41,11 @@ import {
   planChromeStrokeKeyup,
   planEndComposition,
   planIsolatedJamo,
-} from "./planStroke";
-import { playPreeditStep } from "./playPreeditStep";
-import { settleAfterPreedit } from "./settle";
+} from "./planStroke.js";
+import { playPreeditStep } from "./playPreeditStep.js";
+import { settleAfterPreedit } from "./settle.js";
 
-export type { ComposedEventRecord } from "../_internal";
+export type { ComposedEventRecord } from "../_internal/index.js";
 
 export type ComposeHangulOptions = {
   /** When true (default), fire compositionend for the final syllable */

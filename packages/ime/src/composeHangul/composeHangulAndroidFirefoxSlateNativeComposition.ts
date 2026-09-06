@@ -1,7 +1,7 @@
-import type { ComposedEventRecord } from "../_internal";
-import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace";
-import { readEditableText } from "../_internal/editableElement";
-import { settleAfterPreedit } from "./settle";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { ContentEditableImeTrace } from "../_internal/contentEditableImeTrace.js";
+import { readEditableText } from "../_internal/editableElement.js";
+import { settleAfterPreedit } from "./settle.js";
 
 export type NativeCompositionStep = {
   index: number;

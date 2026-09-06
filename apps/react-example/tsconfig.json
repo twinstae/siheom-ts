@@ -1,26 +1,32 @@
 {
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./test/*"],
-      "@test/*": ["./test/*"],
-      "@showcase/tanstack-link": ["./test/stories/routing/tanstack-router/stubs/link.tsx"]
+  "files": [],
+  "references": [
+    {
+      "path": "../../packages/core"
     },
-    "jsx": "preserve",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "es2022",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "allowImportingTsExtensions": true,
-    "module": "Preserve",
-    "noEmit": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"]
-  },
-  "include": ["test", "vitest.config.ts", ".storybook"]
+    {
+      "path": "../../packages/ime"
+    },
+    {
+      "path": "../../packages/ime-cdp"
+    },
+    {
+      "path": "../../packages/react"
+    },
+    {
+      "path": "../../packages/virtual-screen-reader"
+    },
+    {
+      "path": "../../packages/vitest-browser-react"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.test.json"
+    }
+  ]
 }

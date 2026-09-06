@@ -1,13 +1,11 @@
 import type { AssertionStepDefinitionDict, Locator } from "@siheom/core";
-import { getA11ySnapshot } from "../../core/src/getA11ySnapshot.ts";
-import { locatorLog } from "../../core/src/query.ts";
-import { tableToMarkdown } from "../../core/src/tableToMarkdown.ts";
+import { getA11ySnapshot, locatorLog, tableToMarkdown } from "@siheom/core";
 import { expect } from "vitest";
 import {
   getElementFromLocator,
   getElementsFromLocator,
   toBrowserLocator,
-} from "./browserLocator.ts";
+} from "./browserLocator.js";
 
 type BrowserAssertionsOptions = {
   resolveElement?: "sync" | "waitFor";

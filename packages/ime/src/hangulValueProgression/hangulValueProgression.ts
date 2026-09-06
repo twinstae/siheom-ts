@@ -1,6 +1,6 @@
 import { assemble } from "es-hangul";
 
-import { hangulJamos } from "../hangulJamos";
+import { hangulJamos } from "../hangulJamos/index.js";
 
 /** Progressive field values while typing `text` with a Hangul IME (jamo-by-jamo). */
 export function hangulValueProgression(text: string): string[] {

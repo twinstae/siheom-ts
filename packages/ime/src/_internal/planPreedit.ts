@@ -1,4 +1,4 @@
-import type { EventPlanStep } from "./eventPlan";
+import type { EventPlanStep } from "./eventPlan.js";
 
 export type PlanPreeditFacts = {
   valueBefore: string;

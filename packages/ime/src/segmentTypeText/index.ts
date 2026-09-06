@@ -1,2 +1,2 @@
-export { segmentTypeText } from "./segmentTypeText";
-export type { TypeSegment } from "./segmentTypeText";
+export { segmentTypeText } from "./segmentTypeText.js";
+export type { TypeSegment } from "./segmentTypeText.js";

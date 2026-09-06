@@ -1,7 +1,7 @@
-import type { HanjaConversionMode } from "../profiles";
-import type { EventPlanStep } from "../_internal/eventPlan";
-import { planPreedit } from "../_internal/planPreedit";
-import { planSafariInsertFromComposition } from "../_internal/planSafari";
+import type { HanjaConversionMode } from "../profiles/index.js";
+import type { EventPlanStep } from "../_internal/eventPlan.js";
+import { planPreedit } from "../_internal/planPreedit.js";
+import { planSafariInsertFromComposition } from "../_internal/planSafari.js";
 
 export type PlanHanjaBounds = {
   prefix: string;

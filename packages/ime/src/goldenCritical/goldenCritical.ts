@@ -1,5 +1,5 @@
-import type { ComposedEventRecord } from "../_internal";
-import { toCriticalEvents } from "../toCriticalEvents";
+import type { ComposedEventRecord } from "../_internal/index.js";
+import { toCriticalEvents } from "../toCriticalEvents/index.js";
 
 export type GoldenEventRecord = ComposedEventRecord;
 

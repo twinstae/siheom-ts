@@ -1,12 +1,12 @@
 import { actions, assertions, createRunSiheom, effect, query, withFakeTimers } from "@siheom/core";
-import { cleanupReactRoots, defaultGivens, given } from "./given.ts";
-import { reactEffects } from "./effects.ts";
-import { reactFakeTimerScope } from "./fakeTimerScope.ts";
+import { cleanupReactRoots, defaultGivens, given } from "./given.js";
+import { reactEffects } from "./effects.js";
+import { reactFakeTimerScope } from "./fakeTimerScope.js";
 import {
   createReactFakeTimerScopedRegistries,
   reactActions,
   reactAssertions,
-} from "./reactRegistries.ts";
+} from "./reactRegistries.js";
 
 export const runSiheom = createRunSiheom({
   actions: reactActions,

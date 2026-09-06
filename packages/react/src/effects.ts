@@ -1,4 +1,4 @@
-import { actAsync } from "./actAsync.ts";
+import { actAsync } from "./actAsync.js";
 import { vi } from "vitest";
 import type { EffectStepDefinitionDict } from "@siheom/core";
 

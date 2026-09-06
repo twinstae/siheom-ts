@@ -1,4 +1,4 @@
-import type { ComposedEventRecord } from "../_internal";
+import type { ComposedEventRecord } from "../_internal/index.js";
 
 /** Critical fields for golden-trace comparison (keyup order is flaky across captures). */
 export function toCriticalEvents(events: ComposedEventRecord[]) {

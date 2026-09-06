@@ -1,6 +1,6 @@
-import { buildA11yTree } from "./a11y/buildTree.ts";
-import { serializeA11yTree } from "./a11y/serializeTree.ts";
-import type { BuildA11yTreeOptions, SerializeOptions } from "./a11y/types.ts";
+import { buildA11yTree } from "./a11y/buildTree.js";
+import { serializeA11yTree } from "./a11y/serializeTree.js";
+import type { BuildA11yTreeOptions, SerializeOptions } from "./a11y/types.js";
 
 export type {
   A11yNode,
@@ -9,7 +9,7 @@ export type {
   A11yAttributes,
   BuildA11yTreeOptions,
   SerializeOptions,
-} from "./a11y/types.ts";
+} from "./a11y/types.js";
 
 export interface A11ySnapshotOptions extends BuildA11yTreeOptions {
   serialize?: SerializeOptions;
