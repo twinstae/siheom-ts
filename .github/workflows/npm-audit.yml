@@ -1,0 +1,100 @@
+name: NPM audit
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: npm-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: corepack enable
+
+      - name: Run Yarn audit
+        id: audit
+        shell: bash
+        run: |
+          set +e
+          yarn npm audit --all --recursive --no-deprecations > yarn-audit.txt 2>&1
+          audit_status=$?
+          set -e
+
+          cat yarn-audit.txt
+          echo "status=${audit_status}" >> "$GITHUB_OUTPUT"
+
+      - name: Sync audit issue
+        if: always() && steps.audit.outputs.status != ''
+        env:
+          AUDIT_STATUS: ${{ steps.audit.outputs.status }}
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          label="npm-audit"
+          title="Security: Yarn audit findings"
+
+          gh label create "$label" \
+            --repo "$GITHUB_REPOSITORY" \
+            --color "b60205" \
+            --description "Findings from the scheduled Yarn audit" \
+            --force
+
+          issue_number="$(
+            gh issue list \
+              --repo "$GITHUB_REPOSITORY" \
+              --state open \
+              --label "$label" \
+              --limit 1 \
+              --json number \
+              --jq '.[0].number // empty'
+          )"
+
+          if [[ "$AUDIT_STATUS" == "0" ]]; then
+            if [[ -n "$issue_number" ]]; then
+              gh issue close "$issue_number" \
+                --repo "$GITHUB_REPOSITORY" \
+                --comment "The scheduled Yarn audit is passing again."
+            fi
+            exit 0
+          fi
+
+          {
+            echo "The scheduled Yarn audit requires attention."
+            echo
+            echo "- Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+            echo "- Checked: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            echo
+            echo '```text'
+            head -c 50000 yarn-audit.txt
+            echo
+            echo '```'
+          } > npm-audit-issue.md
+
+          if [[ -n "$issue_number" ]]; then
+            gh issue edit "$issue_number" \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "$title" \
+              --body-file npm-audit-issue.md
+          else
+            gh issue create \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "$title" \
+              --label "$label" \
+              --body-file npm-audit-issue.md
+          fi
+
+          exit "$AUDIT_STATUS"
