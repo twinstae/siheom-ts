@@ -53,7 +53,7 @@ compact mode를 기본으로 하여 불필요한 depth 노드나 null 값을 가
 6. 텍스트 기반 직렬화 포맷 정의 및 숨겨진 노드 포함 옵션(includeHidden) 세맨틱스
 7. compact/verbose 출력 모드 정의 및 자식 수(childCount) 추출 방식
 
-`getA11yTree`가 반환하는 구조화 트리는 직렬화 구현을 위한 내부 표현이며, 본 스펙의 공용 패키지 인터페이스로 규정하지 않는다.
+본 스펙은 텍스트 직렬화 형식을 규정한다. `@siheom/snapshot`에서 공개하는 `getA11yTree`와 `A11yNode`의 구조화 트리 인터페이스는 [패키지 문서](../packages/snapshot/README.md#구조화된-트리)에서 별도로 정의한다.
 
 본 스펙은 다음을 다루지 않는다.
 1. Accessible Name/Description 계산 알고리즘의 구현 상세

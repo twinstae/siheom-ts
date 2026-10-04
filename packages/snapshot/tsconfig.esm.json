@@ -1,0 +1,4 @@
+{
+  "extends": "tsconfig-custom/tsconfig.lib.esm.json",
+  "exclude": ["**/*.test.ts", "**/*.spec.ts", "vitest.config.ts"]
+}

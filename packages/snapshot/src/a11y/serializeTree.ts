@@ -10,7 +10,7 @@ import type {
   A11yOther,
   A11yDragDrop,
   SerializeOptions,
-} from "./types.ts";
+} from "./types.js";
 
 function escapeString(str: string): string {
   return str.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n");

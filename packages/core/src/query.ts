@@ -1,6 +1,6 @@
 import { screen, within as tlWithin } from "@testing-library/dom";
+import { concreteRoles, type ConcreteAriaRole } from "@siheom/snapshot/aria-roles";
 import type { Locator } from "./types.js";
-import { concreteRoles, type ConcreteAriaRole } from "./a11y/ariaRoles.js";
 
 type Queries = Pick<
   typeof screen,

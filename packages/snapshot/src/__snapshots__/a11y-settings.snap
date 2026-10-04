@@ -1,0 +1,10 @@
+region: "설정"
+  heading: "설정"
+    - properties: [level=1]
+  checkbox: "알림" [value="on"]
+    - states: [checked=true]
+    - interaction: [focusable=true] [tabbable=true]
+  "알림"
+  button: "메뉴"
+    - interaction: [focusable=true] [tabbable=true]
+    - properties: [haspopup="menu"]

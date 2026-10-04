@@ -1,15 +1,15 @@
 import { computeAccessibleName, computeAccessibleDescription } from "dom-accessibility-api";
-import type { A11yNode, BuildA11yTreeOptions } from "./types.ts";
-import { getRole } from "./roleHelpers.ts";
-import { isInaccessible } from "./isAccessible.ts";
-import { computeStates } from "./computeStates.ts";
-import { computeProperties } from "./computeProperties.ts";
-import { computeRelations } from "./computeRelations.ts";
-import { computeLiveRegion } from "./computeLiveRegion.ts";
-import { computeDragDrop } from "./computeDragDrop.ts";
-import { computeInteraction } from "./computeInteraction.ts";
-import { computeAttributes } from "./computeAttributes.ts";
-import { isNameFromContentRole } from "./ariaRoles.ts";
+import type { A11yNode, BuildA11yTreeOptions } from "./types.js";
+import { getRole } from "./roleHelpers.js";
+import { isInaccessible } from "./isAccessible.js";
+import { computeStates } from "./computeStates.js";
+import { computeProperties } from "./computeProperties.js";
+import { computeRelations } from "./computeRelations.js";
+import { computeLiveRegion } from "./computeLiveRegion.js";
+import { computeDragDrop } from "./computeDragDrop.js";
+import { computeInteraction } from "./computeInteraction.js";
+import { computeAttributes } from "./computeAttributes.js";
+import { isNameFromContentRole } from "./ariaRoles.js";
 
 const SKIP_ROLES = new Set(["generic", "presentation", "none"]);
 

@@ -141,7 +141,7 @@ publish_packages() {
   header "Publish"
 
   local publish_rows=""
-  for package in "@siheom/core" "@siheom/react" "@siheom/vue" "@siheom/svelte" "@siheom/solid" "@siheom/angular" "@siheom/qwik" "@siheom/react-native" "@siheom/ime" "@siheom/vitest-browser-react"; do
+  for package in "@siheom/snapshot" "@siheom/core" "@siheom/react" "@siheom/vue" "@siheom/svelte" "@siheom/solid" "@siheom/angular" "@siheom/qwik" "@siheom/react-native" "@siheom/ime" "@siheom/vitest-browser-react"; do
     local version npm_current published
     version="$(node -e "console.log(JSON.parse(require('fs').readFileSync('packages/${package#@siheom/}/package.json','utf8')).version)")"
     npm_current="$(npm_version "$package")"

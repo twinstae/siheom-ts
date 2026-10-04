@@ -36,14 +36,15 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@siheom/core": "workspace:*"
+    "@siheom/core": "workspace:*",
+    "@siheom/snapshot": "workspace:*"
   },
   "peerDependencies": {
     "@testing-library/react-native": "^14.0.0",
     "react": "^18.0.0 || ^19.0.0",
     "react-native": ">=0.81.0",
     "test-renderer": "^1.2.0",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.5",
@@ -61,7 +62,7 @@
     "tsdown": "^0.22.8",
     "typescript": "^5.9.3",
     "vite": "^8.2.0",
-    "vitest": "^4.1.10",
+    "vitest": "^4.1.11",
     "vitest-native": "^0.8.0"
   },
   "repository": {

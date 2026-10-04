@@ -1,5 +1,6 @@
 import type { AssertionStepDefinitionDict, Locator } from "@siheom/core";
-import { getA11ySnapshot, locatorLog, tableToMarkdown } from "@siheom/core";
+import { locatorLog } from "@siheom/core";
+import { getA11ySnapshot, tableToMarkdown } from "@siheom/snapshot";
 import { expect } from "vitest";
 import {
   getElementFromLocator,

@@ -1,5 +1,5 @@
 import { computeAccessibleName } from "dom-accessibility-api";
-import type { A11yRelation, A11yRelationOrNull, A11yRelations } from "./types.ts";
+import type { A11yRelation, A11yRelationOrNull, A11yRelations } from "./types.js";
 
 const RELATION_ATTRIBUTES = {
   activedescendant: "aria-activedescendant",

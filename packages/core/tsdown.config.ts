@@ -10,6 +10,7 @@ const options = createTsdownBuildOptions({
     "src/withFakeTimers.ts",
     "src/a11y/ariaRoles.ts",
   ],
+  neverBundle: [/^@siheom\/snapshot(\/.*)?$/],
 });
 
 export default defineConfig(options);

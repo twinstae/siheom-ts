@@ -1,4 +1,4 @@
-import type { A11yAttributes } from "./types.ts";
+import type { A11yAttributes } from "./types.js";
 
 const ATTRIBUTE_ALLOWLIST = new Set([
   "role",
