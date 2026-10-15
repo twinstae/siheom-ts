@@ -6,7 +6,7 @@ export { extendSiheom, overrideSiheom } from "./factory.ts";
 export type { SiheomBindings, SiheomFactoryRegistries } from "./factory.ts";
 export { query, getElement } from "./query.ts";
 export { actions, defaultActions, createDefaultActions } from "./action.ts";
-export type { DefaultActions } from "./action.ts";
+export type { DefaultActions, SiheomUser } from "./action.ts";
 export { assertions, defaultAssertions, createDefaultAssertions } from "./assert.ts";
 export type { DefaultAssertions } from "./assert.ts";
 export { effect, defaultEffects } from "./effect.ts";

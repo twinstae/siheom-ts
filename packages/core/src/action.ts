@@ -1,12 +1,26 @@
 import { waitFor } from "@testing-library/dom";
-import { userEvent, type UserEvent } from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import type { ActionStepDefinitionDict, Locator } from "./types";
 import { dispatchDragAndDrop } from "./dispatchDragAndDrop.ts";
 import { getElement, locatorLog } from "./query";
 import { expect } from "vitest";
 
+/**
+ * The user-event methods siheom calls. Satisfied by `@testing-library/user-event`
+ * and by `vitest/browser`'s `userEvent` (real, trusted input via the browser provider).
+ */
+export type SiheomUser = {
+  click(element: Element): Promise<unknown>;
+  dblClick(element: Element): Promise<unknown>;
+  hover(element: Element): Promise<unknown>;
+  clear(element: Element): Promise<unknown>;
+  type(element: Element, text: string): Promise<unknown>;
+  tab(): Promise<unknown>;
+  upload(element: HTMLElement, file: File): Promise<unknown>;
+};
+
 type DefaultActionsOptions = {
-  user?: UserEvent;
+  user?: SiheomUser;
   /** Inside `withFakeTimers`, elements are resolved synchronously. */
   resolveElement?: "sync" | "waitFor";
 };
