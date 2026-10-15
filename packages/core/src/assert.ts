@@ -1,4 +1,5 @@
 import { waitFor, within } from "@testing-library/dom";
+import { computeAccessibleName } from "dom-accessibility-api";
 import type { AssertionStepDefinitionDict, Locator } from "./types";
 import { getElement, getElements, locatorLog } from "./query";
 import { expect } from "vitest";
@@ -231,6 +232,13 @@ export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) 
         );
         expect(texts).toEqual(expected.map(toTextMatcher));
       }),
+    names: async (target: Locator, expected: readonly (string | RegExp)[]) =>
+      withPresentElement(target, (element) => {
+        const names = getDirectItems(element, target.role).map((item) =>
+          computeAccessibleName(item),
+        );
+        expect(names).toEqual(expected.map(toTextMatcher));
+      }),
     a11ySnapshot: async (target: Locator, path: string) => {
       await withPresentElement(target, () => {});
 
@@ -355,6 +363,13 @@ export const assertions = {
       target,
       args: [expected],
       log: `textContents: ${locatorLog(target)} are [${expected.map(String).join(", ")}]`,
+    }) as const,
+  names: (target: Locator, expected: readonly (string | RegExp)[]) =>
+    ({
+      assert: "names",
+      target,
+      args: [expected],
+      log: `names       : ${locatorLog(target)} are [${expected.map(String).join(", ")}]`,
     }) as const,
   not: {
     visible: (target: Locator) =>

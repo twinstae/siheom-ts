@@ -124,3 +124,23 @@ describe("assertions.textContents", () => {
     ).rejects.toThrow("expected [ 'GM', '상인' ] to deeply equal [ 'GM', 'Player' ]");
   });
 });
+
+describe("assertions.names", () => {
+  it("compares items' accessible names in order", async () => {
+    document.body.innerHTML = `
+      <ol aria-label="세션 로그">
+        <li aria-label="마스터 GM">문이 열린다</li>
+        <li aria-label="플레이어 Player">들어간다</li>
+      </ol>
+      <div role="radiogroup" aria-label="편">
+        <label><input type="radio" name="side" />마스터</label>
+        <label><input type="radio" name="side" />플레이어</label>
+      </div>
+    `;
+
+    await runSiheom(
+      assertions.names(query.list("세션 로그"), ["마스터 GM", /^플레이어/]),
+      assertions.names(query.radiogroup("편"), ["마스터", "플레이어"]),
+    );
+  });
+});
