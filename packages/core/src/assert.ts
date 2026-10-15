@@ -110,7 +110,7 @@ async function assertVisible(mode: ResolveElementMode, target: Locator, expected
       return;
     }
 
-    expect(element).not.toHaveAttribute("aria-hidden", "false");
+    expect(element).not.toBeVisible();
   });
 }
 

@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom/vitest";
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { defaultAssertions } from "./assert.ts";
 import { query } from "./query.ts";
 
@@ -20,6 +20,12 @@ describe("assertions.visible", () => {
     document.body.innerHTML = `<button type="button" aria-hidden="true">저장</button>`;
 
     await defaultAssertions.visible(query.button("저장"), false);
+  });
+
+  it("fails not.visible when the element is present and visible", async () => {
+    document.body.innerHTML = `<button type="button">저장</button>`;
+
+    await expect(defaultAssertions.visible(query.button("저장"), false)).rejects.toThrow();
   });
 });
 
