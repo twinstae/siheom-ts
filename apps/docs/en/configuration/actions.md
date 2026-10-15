@@ -24,6 +24,26 @@ actions.upload(query.button("Choose file"), file)
 actions.dragAndDrop(query.listitem("Design"), query.listitem("Done"))
 ```
 
+## Real input (Vitest browser mode)
+
+The default `user` is `@testing-library/user-event`, which dispatches synthetic events (`isTrusted: false`). If a component that detects outside interaction (e.g. Ark UI / zag) does not react, inject `userEvent` from `vitest/browser` (real Playwright input).
+
+```tsx
+import { userEvent } from "vitest/browser";
+import { actions, assertions, createReactSiheom, given, query } from "@siheom/react";
+
+const { runSiheom } = createReactSiheom({ user: userEvent });
+
+await runSiheom(
+  given.render(<PopoverExample />),
+  actions.click(query.button("Open popover")),
+  actions.click(query.button("Outside")),
+  assertions.not.visible(query.dialog("Popover title")),
+);
+```
+
+Inside `withFakeTimers`, the fake-timer user-event is still used.
+
 ## Custom actions
 
 ```ts

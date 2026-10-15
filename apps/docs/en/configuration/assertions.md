@@ -13,12 +13,41 @@ Assertions return step objects `(target: Locator, ...args)`. `assertions.not.*` 
 | `assertions.disabled(target)` | Disabled |
 | `assertions.focused(target)` | Focused |
 | `assertions.current(target, value)` | `aria-current` |
-| `assertions.count(target, n)` | Match count |
+| `assertions.count(target, n)` | Match count (`0` asserts absence) |
 | `assertions.value(target, string)` | Form value |
 | `assertions.textContent(target, string)` | Element text content |
 | `assertions.href(target, string)` | Link `href` |
 | `assertions.description(target, string)` | Accessible description |
 | `assertions.errormessage(target, string)` | Accessible error message |
+
+## List assertions
+
+Pick the container's **direct items** by its role and compare them in order, all of them. Items of nested containers with the same role are skipped.
+
+| Container | Items |
+| --- | --- |
+| `list` | `listitem` |
+| `listbox` | `option` |
+| `menu` | `menuitem` |
+| `tablist` | `tab` |
+| `radiogroup` | `radio` |
+| `table`, `rowgroup` | `row` |
+
+| API | Role |
+| --- | --- |
+| `assertions.textContents(container, expected)` | Item text (whitespace-normalized) — strings match exactly, RegExps match |
+| `assertions.names(container, expected)` | Item accessible names — strings match exactly, RegExps match |
+
+```tsx
+// "only these" + order
+assertions.textContents(query.listbox("Speaker"), ["GM", "Player", "Guard"])
+assertions.textContents(query.list("Session log"), [/^GMThe door opens/, /^It is dark/])
+assertions.names(query.list("Session log"), ["Master GM", "Player Player"])
+// count within a scope
+assertions.count(query.within(query.list("Active characters"), query.listitem(/./)), 10)
+```
+
+`assertions.not.visible` passes only when the element is missing, hidden from the accessibility tree, or not visible.
 
 Negated: `assertions.not.visible`, `not.checked`, `not.expanded`, `not.selected`, `not.disabled`, `not.focused`, `not.current`, `not.count`, `not.value`, `not.textContent`, `not.href`, `not.errormessage`.
 
