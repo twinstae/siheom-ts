@@ -2,6 +2,7 @@ import "@testing-library/jest-dom/vitest";
 import { describe, expect, it } from "vitest";
 import { createDefaultActions } from "./action.ts";
 import { query } from "./query.ts";
+import { userEvent as browserUserEvent } from "vitest/browser";
 
 const actions = createDefaultActions();
 
@@ -95,5 +96,23 @@ describe("defaultActions", () => {
     await actions.dragAndDrop(query.listitem("디자인"), query.listitem("완료"));
 
     expect(done).toHaveTextContent("디자인");
+  });
+});
+
+describe("createDefaultActions with an injected user", () => {
+  it("accepts vitest/browser userEvent so clicks are trusted (real) input", async () => {
+    document.body.innerHTML = `<button type="button">바깥 버튼</button>`;
+    let isTrusted: boolean | undefined;
+    document.addEventListener(
+      "pointerdown",
+      (event) => {
+        isTrusted = event.isTrusted;
+      },
+      { once: true },
+    );
+
+    await createDefaultActions({ user: browserUserEvent }).click(query.button("바깥 버튼"));
+
+    expect(isTrusted).toBe(true);
   });
 });
