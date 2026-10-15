@@ -121,7 +121,7 @@ async function assertCount(
   flag: boolean,
 ) {
   await waitUntil(mode, async () => {
-    const elements = getElements(target, true);
+    const elements = getElements(target, false);
     if (flag) {
       expect(elements).toHaveLength(expected);
     } else {

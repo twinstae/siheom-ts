@@ -56,7 +56,7 @@ Prefer exercising public APIs through `runSiheom` / `defaultActions` / `defaultA
 ## Absence and lists (siheom-issue, siheom-issue-2)
 
 - [x] `not.visible` fails when the element is present and visible
-- [ ] `count(target, 0)` passes when nothing matches
+- [x] `count(target, 0)` passes when nothing matches
 - [ ] `textContents` passes when list items' normalized text equals expected in order
 - [ ] `textContents` fails when an extra item is present
 - [ ] `textContents` accepts RegExp entries
