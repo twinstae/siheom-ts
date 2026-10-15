@@ -7,6 +7,7 @@ import {
   type EffectStepDefinitionDict,
   type GivenStepDefinitionDict,
   type SiheomRegistryBundle,
+  type SiheomUser,
 } from "@siheom/core";
 import { actAsync } from "./actAsync.ts";
 
@@ -21,7 +22,11 @@ function wrapInActAsync<T extends Record<string, (...args: never[]) => Promise<v
   ) as T;
 }
 
-export const reactActions = wrapInActAsync(createDefaultActions()) as ActionStepDefinitionDict;
+export function createReactActions(user?: SiheomUser): ActionStepDefinitionDict {
+  return wrapInActAsync(createDefaultActions({ user })) as ActionStepDefinitionDict;
+}
+
+export const reactActions = createReactActions();
 export const reactAssertions = wrapInActAsync(
   createDefaultAssertions(),
 ) as AssertionStepDefinitionDict;
