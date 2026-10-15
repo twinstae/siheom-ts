@@ -52,3 +52,15 @@ Prefer exercising public APIs through `runSiheom` / `defaultActions` / `defaultA
 - [x] Renders thead/tbody cells as padded markdown
 - [x] Empty table throws
 - [x] Diverse fixtures: Korean padding, input cell, progress cell, mixed widths, ARIA table roles
+
+## Absence and lists (siheom-issue, siheom-issue-2)
+
+- [x] `not.visible` fails when the element is present and visible
+- [ ] `count(target, 0)` passes when nothing matches
+- [ ] `textContents` passes when list items' normalized text equals expected in order
+- [ ] `textContents` fails when an extra item is present
+- [ ] `textContents` accepts RegExp entries
+- [ ] `textContents` ignores items of nested lists
+- [ ] `textContents` picks child roles by container role (listbox → option, table → row, ...)
+- [ ] `names` compares items' accessible names in order
+- [ ] `createDefaultActions` accepts any user with the user-event method subset (e.g. `vitest/browser` `userEvent`)

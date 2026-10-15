@@ -96,7 +96,7 @@ export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) 
           return;
         }
 
-        expect(element).not.toHaveAttribute("aria-hidden", "false");
+        expect(element).not.toBeVisible();
       });
     },
     checked: async (target: Locator, expected: boolean) =>
