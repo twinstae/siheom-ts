@@ -1,4 +1,5 @@
 import { waitFor, within } from "@testing-library/dom";
+import { computeAccessibleName } from "dom-accessibility-api";
 import type { AssertionStepDefinitionDict, Locator } from "./types.js";
 import { getElement, getElements, locatorLog } from "./query.js";
 import type { A11ySnapshotOptions } from "./getA11ySnapshot.js";
@@ -307,6 +308,17 @@ async function assertTextContents(
   });
 }
 
+async function assertNames(
+  mode: ResolveElementMode,
+  target: Locator,
+  expected: readonly (string | RegExp)[],
+) {
+  await withPresentElement(mode, target, (element) => {
+    const names = getDirectItems(element, target.role).map((item) => computeAccessibleName(item));
+    expect(names).toEqual(expected.map(toTextMatcher));
+  });
+}
+
 export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) {
   const mode = options.resolveElement ?? "waitFor";
 
@@ -335,6 +347,8 @@ export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) 
       assertTextContent(mode, target, expected, flag),
     textContents: (target: Locator, expected: readonly (string | RegExp)[]) =>
       assertTextContents(mode, target, expected),
+    names: (target: Locator, expected: readonly (string | RegExp)[]) =>
+      assertNames(mode, target, expected),
     a11ySnapshot: (target: Locator, path: string, options?: A11ySnapshotOptions) =>
       assertA11ySnapshot(mode, target, path, options),
     tableSnapshot: (target: Locator, path: string) => assertTableSnapshot(mode, target, path),
@@ -446,6 +460,13 @@ export const assertions = {
       target,
       args: [expected],
       log: `textContents: ${locatorLog(target)} are [${expected.map(String).join(", ")}]`,
+    }) as const,
+  names: (target: Locator, expected: readonly (string | RegExp)[]) =>
+    ({
+      assert: "names",
+      target,
+      args: [expected],
+      log: `names       : ${locatorLog(target)} are [${expected.map(String).join(", ")}]`,
     }) as const,
   not: {
     visible: (target: Locator) =>

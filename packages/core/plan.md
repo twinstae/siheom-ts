@@ -62,5 +62,5 @@ Prefer exercising public APIs through `runSiheom` / `defaultActions` / `defaultA
 - [x] `textContents` accepts RegExp entries
 - [x] `textContents` ignores items of nested lists
 - [x] `textContents` picks child roles by container role (listbox → option, table → row, ...)
-- [ ] `names` compares items' accessible names in order
+- [x] `names` compares items' accessible names in order
 - [ ] `createDefaultActions` accepts any user with the user-event method subset (e.g. `vitest/browser` `userEvent`)
