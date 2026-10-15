@@ -24,6 +24,26 @@ actions.upload(query.button("파일 선택"), file)
 actions.dragAndDrop(query.listitem("디자인"), query.listitem("완료"))
 ```
 
+## 실제 입력으로 실행하기 (Vitest browser 모드)
+
+기본 `user`는 `@testing-library/user-event`의 합성 이벤트(`isTrusted: false`)입니다. Ark UI(zag)처럼 바깥 상호작용을 감지하는 컴포넌트가 반응하지 않으면, `vitest/browser`의 `userEvent`(Playwright 실제 입력)를 주입하세요.
+
+```tsx
+import { userEvent } from "vitest/browser";
+import { actions, assertions, createReactSiheom, given, query } from "@siheom/react";
+
+const { runSiheom } = createReactSiheom({ user: userEvent });
+
+await runSiheom(
+  given.render(<PopoverExample />),
+  actions.click(query.button("팝오버 열기")),
+  actions.click(query.button("바깥 버튼")),
+  assertions.not.visible(query.dialog("팝오버 제목")),
+);
+```
+
+`withFakeTimers` 안에서는 가짜 타이머용 user-event를 그대로 씁니다.
+
 ## 커스텀 action
 
 ```ts
