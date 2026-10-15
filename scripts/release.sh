@@ -146,16 +146,22 @@ publish_packages() {
   header "Publish"
 
   local publish_rows=""
-  for package in "@siheom/core" "@siheom/react" "@siheom/vue" "@siheom/svelte" "@siheom/solid" "@siheom/angular" "@siheom/qwik" "@siheom/react-native" "@siheom/ime" "@siheom/vitest-browser-react"; do
+  local package location
+  while IFS=',' read -r package location; do
     local version npm_current published
-    version="$(node -e "console.log(JSON.parse(require('fs').readFileSync('packages/${package#@siheom/}/package.json','utf8')).version)")"
+    version="$(node -p "require('./${location}/package.json').version")"
     npm_current="$(npm_version "$package")"
     published="pending"
     if [[ "$(npm_version "${package}@${version}")" == "$version" ]]; then
       published="already on npm"
     fi
     publish_rows+="${package},${version},${npm_current},${published}"$'\n'
-  done
+  done < <(yarn workspaces list --no-private --json | node -e "
+    require('readline').createInterface({ input: process.stdin }).on('line', (line) => {
+      const { name, location } = JSON.parse(line);
+      console.log(name + ',' + location);
+    });
+  ")
 
   {
     echo "Package,Version,npm latest,Status"
@@ -175,7 +181,8 @@ publish_packages() {
   fi
 
   step "Publishing to npm"
-  local publish_cmd=(node scripts/publish-packages.mjs)
+  # yarn npm publish rewrites workspace: ranges and honors each package's "files".
+  local publish_cmd=(yarn workspaces foreach --all --no-private --topological npm publish --access public --tolerate-republish)
   if [[ -n "$otp" ]]; then
     publish_cmd+=(--otp "$otp")
   fi
