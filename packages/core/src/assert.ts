@@ -110,6 +110,17 @@ export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) 
     });
   }
 
+  function withItems(
+    target: Locator,
+    expected: readonly (string | RegExp)[],
+    describeItem: (item: HTMLElement) => string,
+  ) {
+    return withPresentElement(target, (element) => {
+      const actual = getDirectItems(element, target.role).map(describeItem);
+      expect(actual).toEqual(expected.map(toTextMatcher));
+    });
+  }
+
   async function waitUntil(assertion: () => void | Promise<void>) {
     if (resolveElement === "sync") {
       await assertion();
@@ -226,19 +237,9 @@ export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) 
         (element) => expect(element).not.toHaveTextContent(expected),
       ),
     textContents: async (target: Locator, expected: readonly (string | RegExp)[]) =>
-      withPresentElement(target, (element) => {
-        const texts = getDirectItems(element, target.role).map((item) =>
-          normalizeWhitespace(item.textContent ?? ""),
-        );
-        expect(texts).toEqual(expected.map(toTextMatcher));
-      }),
+      withItems(target, expected, (item) => normalizeWhitespace(item.textContent ?? "")),
     names: async (target: Locator, expected: readonly (string | RegExp)[]) =>
-      withPresentElement(target, (element) => {
-        const names = getDirectItems(element, target.role).map((item) =>
-          computeAccessibleName(item),
-        );
-        expect(names).toEqual(expected.map(toTextMatcher));
-      }),
+      withItems(target, expected, computeAccessibleName),
     a11ySnapshot: async (target: Locator, path: string) => {
       await withPresentElement(target, () => {});
 
