@@ -145,7 +145,7 @@ export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) 
       ),
     count: async (target: Locator, expected: number, flag = true) => {
       await waitUntil(async () => {
-        const elements = getElements(target, true);
+        const elements = getElements(target, false);
 
         if (flag) {
           expect(elements).toHaveLength(expected);

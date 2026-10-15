@@ -88,6 +88,12 @@ describe("assertions.count", () => {
 
     await defaultAssertions.count(query.button("삭제"), 2, false);
   });
+
+  it("passes count 0 when nothing matches", async () => {
+    document.body.innerHTML = `<button type="button">저장</button>`;
+
+    await defaultAssertions.count(query.button("삭제"), 0, true);
+  });
 });
 
 describe("assertions.value href errormessage description expanded", () => {
