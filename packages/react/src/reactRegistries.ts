@@ -7,6 +7,7 @@ import {
   type EffectStepDefinitionDict,
   type GivenStepDefinitionDict,
   type SiheomRegistryBundle,
+  type SiheomUser,
 } from "@siheom/core";
 import { actAsync } from "./actAsync.js";
 
@@ -21,7 +22,11 @@ function wrapInActAsync<T extends Record<string, (...args: never[]) => Promise<v
   ) as T;
 }
 
-export const reactActions = wrapInActAsync(createDefaultActions());
+export function createReactActions(user?: SiheomUser) {
+  return wrapInActAsync(createDefaultActions({ user }));
+}
+
+export const reactActions = createReactActions();
 export const reactAssertions = wrapInActAsync(createDefaultAssertions());
 
 export function createReactFakeTimerScopedRegistries<

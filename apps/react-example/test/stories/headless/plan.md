@@ -18,3 +18,7 @@ Siheom specs for the same subscribe-dialog scenario across headless UI libraries
 - [x] Ark UI (`ArkUi.tsx`)
 
 Each library: `test/components/<library>/`, `test/stories/<Name>.tsx`, `.test.tsx`, `.stories.tsx`.
+
+## Outside interaction
+
+- [x] Ark UI Popover closes on an outside click driven by `createReactSiheom({ user: userEvent })` from `vitest/browser` (`ArkPopover.tsx`)
