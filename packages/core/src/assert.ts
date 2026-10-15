@@ -295,28 +295,20 @@ function toTextMatcher(expected: string | RegExp): unknown {
   return typeof expected === "string" ? expected : expect.stringMatching(expected);
 }
 
-async function assertTextContents(
+async function assertItems(
   mode: ResolveElementMode,
   target: Locator,
   expected: readonly (string | RegExp)[],
+  describeItem: (item: HTMLElement) => string,
 ) {
   await withPresentElement(mode, target, (element) => {
-    const texts = getDirectItems(element, target.role).map((item) =>
-      normalizeWhitespace(item.textContent ?? ""),
-    );
-    expect(texts).toEqual(expected.map(toTextMatcher));
+    const actual = getDirectItems(element, target.role).map(describeItem);
+    expect(actual).toEqual(expected.map(toTextMatcher));
   });
 }
 
-async function assertNames(
-  mode: ResolveElementMode,
-  target: Locator,
-  expected: readonly (string | RegExp)[],
-) {
-  await withPresentElement(mode, target, (element) => {
-    const names = getDirectItems(element, target.role).map((item) => computeAccessibleName(item));
-    expect(names).toEqual(expected.map(toTextMatcher));
-  });
+function itemText(item: HTMLElement): string {
+  return normalizeWhitespace(item.textContent ?? "");
 }
 
 export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) {
@@ -346,9 +338,9 @@ export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) 
     textContent: (target: Locator, expected: string, flag = true) =>
       assertTextContent(mode, target, expected, flag),
     textContents: (target: Locator, expected: readonly (string | RegExp)[]) =>
-      assertTextContents(mode, target, expected),
+      assertItems(mode, target, expected, itemText),
     names: (target: Locator, expected: readonly (string | RegExp)[]) =>
-      assertNames(mode, target, expected),
+      assertItems(mode, target, expected, computeAccessibleName),
     a11ySnapshot: (target: Locator, path: string, options?: A11ySnapshotOptions) =>
       assertA11ySnapshot(mode, target, path, options),
     tableSnapshot: (target: Locator, path: string) => assertTableSnapshot(mode, target, path),
