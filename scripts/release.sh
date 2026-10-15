@@ -45,8 +45,13 @@ step() {
 
 npm_version() {
   local package="$1"
-  yarn npm info "$package" --fields version --json 2>/dev/null |
-    node -p "JSON.parse(require('fs').readFileSync(0, 'utf8')).version" || echo "unpublished"
+  local info
+  # yarn reports a 404 as JSON error lines on stdout with a non-zero exit.
+  if info="$(yarn npm info "$package" --fields version --json 2>/dev/null)"; then
+    node -p "JSON.parse(process.argv[1]).version" "$info"
+  else
+    echo "unpublished"
+  fi
 }
 
 show_version_plan() {
