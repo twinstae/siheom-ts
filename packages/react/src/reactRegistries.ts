@@ -26,7 +26,6 @@ export function createReactActions(user?: SiheomUser): ActionStepDefinitionDict 
   return wrapInActAsync(createDefaultActions({ user })) as ActionStepDefinitionDict;
 }
 
-export const reactActions = createReactActions();
 export const reactAssertions = wrapInActAsync(
   createDefaultAssertions(),
 ) as AssertionStepDefinitionDict;
