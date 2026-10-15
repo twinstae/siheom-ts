@@ -1,6 +1,6 @@
 {
   "name": "@siheom/angular",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Angular runtime for siheom (data-first frontend test interpreter)",
   "type": "module",
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "name": "@siheom/vue",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Vue runtime for siheom (data-first frontend test interpreter)",
   "type": "module",
   "license": "MIT",

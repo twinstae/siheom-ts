@@ -1,6 +1,6 @@
 {
   "name": "@siheom/ime-cdp",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Chromium CDP Hangul IME backend for siheom (Vitest browser mode)",
   "type": "module",
   "license": "MIT",
