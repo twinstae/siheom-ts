@@ -57,10 +57,10 @@ Prefer exercising public APIs through `runSiheom` / `defaultActions` / `defaultA
 
 - [x] `not.visible` fails when the element is present and visible
 - [x] `count(target, 0)` passes when nothing matches
-- [ ] `textContents` passes when list items' normalized text equals expected in order
-- [ ] `textContents` fails when an extra item is present
-- [ ] `textContents` accepts RegExp entries
-- [ ] `textContents` ignores items of nested lists
-- [ ] `textContents` picks child roles by container role (listbox → option, table → row, ...)
+- [x] `textContents` passes when list items' normalized text equals expected in order
+- [x] `textContents` fails when an extra item is present
+- [x] `textContents` accepts RegExp entries
+- [x] `textContents` ignores items of nested lists
+- [x] `textContents` picks child roles by container role (listbox → option, table → row, ...)
 - [ ] `names` compares items' accessible names in order
 - [ ] `createDefaultActions` accepts any user with the user-event method subset (e.g. `vitest/browser` `userEvent`)

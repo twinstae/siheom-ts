@@ -1,4 +1,4 @@
-import { waitFor } from "@testing-library/dom";
+import { waitFor, within } from "@testing-library/dom";
 import type { AssertionStepDefinitionDict, Locator } from "./types";
 import { getElement, getElements, locatorLog } from "./query";
 import { expect } from "vitest";
@@ -27,6 +27,44 @@ function expectElementChecked(element: HTMLElement, expected: boolean) {
   } else {
     expect(element).not.toHaveAttribute("aria-checked", "true");
   }
+}
+
+function normalizeWhitespace(text: string): string {
+  return text.replace(/\s+/g, " ").trim();
+}
+
+const ITEM_ROLE_BY_CONTAINER_ROLE: Record<string, string> = {
+  list: "listitem",
+  listbox: "option",
+  menu: "menuitem",
+  tablist: "tab",
+  radiogroup: "radio",
+  table: "row",
+  rowgroup: "row",
+};
+
+function getItemRole(containerRole: string): string {
+  const itemRole = ITEM_ROLE_BY_CONTAINER_ROLE[containerRole];
+  if (itemRole === undefined) {
+    throw new Error(
+      `${containerRole} is not a list-like container. Use one of: ${Object.keys(ITEM_ROLE_BY_CONTAINER_ROLE).join(", ")}`,
+    );
+  }
+  return itemRole;
+}
+
+/** Items owned by `container`, excluding those of nested containers with the same role. */
+function getDirectItems(container: HTMLElement, containerRole: string) {
+  const itemRole = getItemRole(containerRole);
+  const scope = within(container);
+  const nestedContainers = scope.queryAllByRole(containerRole);
+  return scope
+    .queryAllByRole(itemRole)
+    .filter((item) => !nestedContainers.some((nested) => nested.contains(item)));
+}
+
+function toTextMatcher(expected: string | RegExp): unknown {
+  return typeof expected === "string" ? expected : expect.stringMatching(expected);
 }
 
 export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) {
@@ -186,6 +224,13 @@ export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) 
         (element) => expect(element).toHaveTextContent(expected),
         (element) => expect(element).not.toHaveTextContent(expected),
       ),
+    textContents: async (target: Locator, expected: readonly (string | RegExp)[]) =>
+      withPresentElement(target, (element) => {
+        const texts = getDirectItems(element, target.role).map((item) =>
+          normalizeWhitespace(item.textContent ?? ""),
+        );
+        expect(texts).toEqual(expected.map(toTextMatcher));
+      }),
     a11ySnapshot: async (target: Locator, path: string) => {
       await withPresentElement(target, () => {});
 
@@ -303,6 +348,13 @@ export const assertions = {
       target,
       args: [expected, true],
       log: `textContent : ${locatorLog(target)} is "${expected}"`,
+    }) as const,
+  textContents: (target: Locator, expected: readonly (string | RegExp)[]) =>
+    ({
+      assert: "textContents",
+      target,
+      args: [expected],
+      log: `textContents: ${locatorLog(target)} are [${expected.map(String).join(", ")}]`,
     }) as const,
   not: {
     visible: (target: Locator) =>
