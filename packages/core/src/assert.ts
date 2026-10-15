@@ -1,4 +1,4 @@
-import { waitFor } from "@testing-library/dom";
+import { waitFor, within } from "@testing-library/dom";
 import type { AssertionStepDefinitionDict, Locator } from "./types.js";
 import { getElement, getElements, locatorLog } from "./query.js";
 import type { A11ySnapshotOptions } from "./getA11ySnapshot.js";
@@ -256,6 +256,57 @@ async function assertTextContent(
   );
 }
 
+function normalizeWhitespace(text: string): string {
+  return text.replace(/\s+/g, " ").trim();
+}
+
+const ITEM_ROLE_BY_CONTAINER_ROLE: Record<string, string> = {
+  list: "listitem",
+  listbox: "option",
+  menu: "menuitem",
+  tablist: "tab",
+  radiogroup: "radio",
+  table: "row",
+  rowgroup: "row",
+};
+
+function getItemRole(containerRole: string): string {
+  const itemRole = ITEM_ROLE_BY_CONTAINER_ROLE[containerRole];
+  if (itemRole === undefined) {
+    throw new Error(
+      `${containerRole} is not a list-like container. Use one of: ${Object.keys(ITEM_ROLE_BY_CONTAINER_ROLE).join(", ")}`,
+    );
+  }
+  return itemRole;
+}
+
+/** Items owned by `container`, excluding those of nested containers with the same role. */
+function getDirectItems(container: HTMLElement, containerRole: string) {
+  const itemRole = getItemRole(containerRole);
+  const scope = within(container);
+  const nestedContainers = scope.queryAllByRole(containerRole);
+  return scope
+    .queryAllByRole(itemRole)
+    .filter((item) => !nestedContainers.some((nested) => nested.contains(item)));
+}
+
+function toTextMatcher(expected: string | RegExp): unknown {
+  return typeof expected === "string" ? expected : expect.stringMatching(expected);
+}
+
+async function assertTextContents(
+  mode: ResolveElementMode,
+  target: Locator,
+  expected: readonly (string | RegExp)[],
+) {
+  await withPresentElement(mode, target, (element) => {
+    const texts = getDirectItems(element, target.role).map((item) =>
+      normalizeWhitespace(item.textContent ?? ""),
+    );
+    expect(texts).toEqual(expected.map(toTextMatcher));
+  });
+}
+
 export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) {
   const mode = options.resolveElement ?? "waitFor";
 
@@ -282,6 +333,8 @@ export function createDefaultAssertions(options: DefaultAssertionsOptions = {}) 
     description: (target: Locator, expected: string) => assertDescription(mode, target, expected),
     textContent: (target: Locator, expected: string, flag = true) =>
       assertTextContent(mode, target, expected, flag),
+    textContents: (target: Locator, expected: readonly (string | RegExp)[]) =>
+      assertTextContents(mode, target, expected),
     a11ySnapshot: (target: Locator, path: string, options?: A11ySnapshotOptions) =>
       assertA11ySnapshot(mode, target, path, options),
     tableSnapshot: (target: Locator, path: string) => assertTableSnapshot(mode, target, path),
@@ -386,6 +439,13 @@ export const assertions = {
       target,
       args: [expected, true],
       log: `textContent : ${locatorLog(target)} is "${expected}"`,
+    }) as const,
+  textContents: (target: Locator, expected: readonly (string | RegExp)[]) =>
+    ({
+      assert: "textContents",
+      target,
+      args: [expected],
+      log: `textContents: ${locatorLog(target)} are [${expected.map(String).join(", ")}]`,
     }) as const,
   not: {
     visible: (target: Locator) =>
