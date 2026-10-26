@@ -168,33 +168,41 @@ publish_packages() {
     printf "%s" "$publish_rows"
   } | gum table --separator "," --widths 22,10,12,16 --print
 
-  local otp="${NPM_OTP:-}"
-  if [[ -z "$otp" ]] && confirm "Does npm require a one-time password (2FA)?" no; then
-    otp="$(gum input --placeholder "Enter npm OTP")"
-  elif [[ -n "$otp" ]]; then
-    gum log --level info "Using NPM_OTP for publish"
+  # The workflow publishes origin/main, so it must already contain the release commit.
+  git fetch --quiet origin main
+  if [[ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]]; then
+    die "Local HEAD differs from origin/main. Push (or pull) before publishing."
   fi
 
-  if ! confirm "Publish packages to npm?"; then
-    gum log --level warn "Publish skipped. Version commit is local only."
+  if ! confirm "Publish packages to npm via GitHub Actions (trusted publishing)?"; then
+    gum log --level warn "Publish skipped."
     return 0
   fi
 
-  step "Publishing to npm"
-  # yarn npm publish rewrites workspace: ranges and honors each package's "files".
-  local publish_cmd=(yarn workspaces foreach --all --no-private --topological npm publish --access public --tolerate-republish)
-  if [[ -n "$otp" ]]; then
-    publish_cmd+=(--otp "$otp")
-  fi
+  step "Triggering publish workflow"
+  local dispatched_at run_id=""
+  # 60s margin for local clock drift (e.g. WSL) against GitHub's createdAt.
+  dispatched_at="$(node -p "new Date(Date.now() - 60000).toISOString().slice(0, 19) + 'Z'")"
+  gh workflow run publish.yml --ref main
 
-  if ! gum spin --spinner dot --title "npm publish..." --show-output -- "${publish_cmd[@]}"; then
-    die "Publish failed."
+  # gh workflow run does not print the run id; wait for the run it created.
+  for _ in {1..30}; do
+    run_id="$(gh run list --workflow publish.yml --event workflow_dispatch --limit 1 \
+      --json databaseId,createdAt \
+      --jq ".[] | select(.createdAt >= \"$dispatched_at\") | .databaseId")"
+    [[ -n "$run_id" ]] && break
+    sleep 2
+  done
+  [[ -n "$run_id" ]] || die "Publish workflow run did not start. Check GitHub Actions."
+
+  if ! gh run watch "$run_id" --exit-status; then
+    die "Publish workflow failed: $(gh run view "$run_id" --json url --jq .url)"
   fi
 
   gum log --level info "Packages published"
 }
 
-maybe_push() {
+push_release() {
   if git status -sb | grep -q '^\#\# .*ahead'; then
     if confirm "Push release commit(s) to origin?"; then
       step "Pushing to origin"
@@ -231,6 +239,7 @@ main() {
   require_cmd gum
   require_cmd yarn
   require_cmd git
+  require_cmd gh
   require_cmd node
 
   gum style \
@@ -267,9 +276,11 @@ main() {
     version_and_commit
   fi
 
-  header "3. Publish"
+  header "3. Push"
+  push_release
+
+  header "4. Publish"
   publish_packages
-  maybe_push
 
   gum style --foreground 10 --bold "Release flow complete."
 }

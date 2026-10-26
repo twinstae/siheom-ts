@@ -1,0 +1,32 @@
+name: Publish
+
+# npm trusted publishing (OIDC): each @siheom/* package on npmjs.com trusts
+# twinstae/siheom-ts + publish.yml, so no npm token or OTP is needed.
+# Triggered by `yarn release` after the version commit is pushed.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: corepack enable
+      - run: yarn install --immutable
+      - run: yarn build
+
+      - name: Publish to npm
+        run: yarn workspaces foreach --all --no-private --topological npm publish --access public --tolerate-republish --provenance
