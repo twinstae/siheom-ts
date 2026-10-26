@@ -26,9 +26,9 @@ export type LocatorTargetStep = (target: Locator, ...args: never[]) => Promise<v
  * @see https://github.com/sindresorhus/type-fest/blob/main/source/omit-index-signature.d.ts
  */
 export type OmitIndexSignature<ObjectType> = {
-  [KeyType in keyof ObjectType as {} extends Record<KeyType, unknown>
-    ? never
-    : KeyType]: ObjectType[KeyType];
+  [
+    KeyType in keyof ObjectType as {} extends Record<KeyType, unknown> ? never : KeyType
+  ]: ObjectType[KeyType];
 };
 
 type TargetStepBindings<

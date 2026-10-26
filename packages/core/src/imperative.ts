@@ -78,8 +78,9 @@ type ImperativeAssertionBindings<TAssertions extends AssertionStepDefinitionDict
 };
 
 type ImperativeNotAssertionBindings<TAssertions extends AssertionStepDefinitionDict> = {
-  [K in keyof OmitIndexSignature<TAssertions> &
-    (BooleanAssertionKey | FlagAssertionKey)]: K extends BooleanAssertionKey
+  [
+    K in keyof OmitIndexSignature<TAssertions> & (BooleanAssertionKey | FlagAssertionKey)
+  ]: K extends BooleanAssertionKey
     ? (target: Locator) => Promise<void>
     : OmitIndexSignature<TAssertions>[K] extends (
           target: Locator,
