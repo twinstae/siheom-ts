@@ -42,7 +42,6 @@
     "lint:fix": "oxlint --fix packages/*/src apps/react-example/test apps/react-native-examples/test",
     "local-check": "yarn format && yarn lint:fix && yarn build && yarn check-exports && yarn typecheck && yarn workspace @siheom/react-example test && yarn workspace @siheom/ime test && yarn workspace @siheom/ime-cdp test && yarn workspace @siheom/virtual-screen-reader test",
     "release": "./scripts/release.sh",
-    "local-release": "changeset version && changeset publish",
     "storybook": "yarn workspace @siheom/react-example storybook",
     "storybook:react-native": "yarn workspace @siheom/react-native-examples storybook",
     "install:nose": "bash scripts/install-nose.sh",
