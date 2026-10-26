@@ -1,5 +1,11 @@
 # @siheom/core
 
+## 0.4.1
+
+### Patch Changes
+
+- Resolve `yarn npm audit` findings in dev tooling (vite, vitest, storybook, framework test deps, and transitive packages). Runtime dependencies are unchanged.
+
 ## 0.4.0
 
 ### Minor Changes

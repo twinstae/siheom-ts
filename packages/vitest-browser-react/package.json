@@ -1,6 +1,6 @@
 {
   "name": "@siheom/vitest-browser-react",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Experimental React runtime for siheom using vitest-browser-react",
   "type": "module",
   "license": "MIT",
