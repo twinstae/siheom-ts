@@ -19,14 +19,27 @@ jobs:
     name: publish
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
+          # No dependency cache in the release job (cache poisoning risk).
+          package-manager-cache: false
 
       - run: corepack enable
       - run: yarn install --immutable
       - run: yarn build
 
+      # Rekor can store a provenance entry and still fail the request; Yarn's
+      # retry then gets "409 equivalent entry already exists" and aborts.
+      # --tolerate-republish makes re-running skip packages already on npm.
       - name: Publish to npm
-        run: yarn workspaces foreach --all --no-private --topological npm publish --access public --tolerate-republish --provenance
+        run: |
+          for attempt in 1 2 3; do
+            if yarn workspaces foreach --all --no-private --topological npm publish --access public --tolerate-republish --provenance; then
+              exit 0
+            fi
+            echo "::warning::Publish attempt ${attempt} failed; retrying"
+            sleep 15
+          done
+          exit 1
