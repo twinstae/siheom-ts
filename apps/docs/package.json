@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "vitepress": "patch:vitepress@npm%3A1.6.4#~/.yarn/patches/vitepress-npm-1.6.4-b16bf1e917.patch",
-    "vue": "^3.5.40"
+    "vue": "^3.5.45"
   }
 }

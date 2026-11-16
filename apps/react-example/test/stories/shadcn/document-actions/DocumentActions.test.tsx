@@ -15,8 +15,8 @@ describe("DocumentActions", () => {
     await runSiheom(
       given.render(<DocumentActions />),
       actions.click(query.button("기획서 더보기")),
-      assertions.visible(query.menu("기획서 더보기")),
-      actions.click(query.within(query.menu("기획서 더보기"), query.menuitem("복사"))),
+      assertions.visible(query.menu("문서 동작")),
+      actions.click(query.within(query.menu("문서 동작"), query.menuitem("복사"))),
       assertions.textContent(query.status("복사 결과"), "기획서 복사됨"),
     );
   });

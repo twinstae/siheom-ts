@@ -45,17 +45,17 @@
     "vitest": "^4.1.10"
   },
   "devDependencies": {
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@types/node": "^24.13.3",
-    "@vitest/browser": "^4.1.10",
-    "@vitest/browser-playwright": "^4.1.10",
-    "@vitest/coverage-v8": "4.1.10",
-    "playwright": "^1.61.1",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@types/node": "^24.19.2",
+    "@vitest/browser": "^4.1.12",
+    "@vitest/browser-playwright": "^4.1.12",
+    "@vitest/coverage-v8": "4.1.12",
+    "playwright": "^1.65.1",
     "tsconfig-custom": "workspace:*",
-    "tsdown": "^0.22.8",
+    "tsdown": "^0.22.14",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.12"
   },
   "repository": {
     "type": "git",
