@@ -1,6 +1,11 @@
 import { configure } from "@testing-library/dom";
 import * as React from "react";
 
+declare global {
+  // Read by React to decide whether updates outside act() should warn.
+  var IS_REACT_ACT_ENVIRONMENT: boolean | undefined;
+}
+
 configure({
   asyncWrapper: async (callback) => {
     let result: unknown;
