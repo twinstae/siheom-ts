@@ -27,7 +27,13 @@ export function createReactActions(user?: SiheomUser) {
 }
 
 export const reactActions = createReactActions();
-export const reactAssertions = wrapInActAsync(createDefaultAssertions());
+/**
+ * Assertions are not wrapped in `act`. They poll with `waitFor`, and React holds updates queued
+ * inside an `act` scope until the scope ends — so a state update that settles while an assertion
+ * waits (a fetch, `file.text()`, a timer) would never render until the assertion had timed out.
+ * `configureTestingLibrary` turns the act environment off while `waitFor` polls instead.
+ */
+export const reactAssertions = createDefaultAssertions();
 
 export function createReactFakeTimerScopedRegistries<
   TActions extends ActionStepDefinitionDict,
